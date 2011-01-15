@@ -47,7 +47,7 @@
                                             <span>&nbsp;&rarr;<?php echo($source->name); ?>&nbsp;</span>
                                             <span><a href="javascript:DeleteChannel('<?php echo($source->id); ?>')">delete?</a></span>
                                             <span class="active" style="<?php echo($source->active ? "display:inline" : "display:none"); ?>" id="active_<?php echo($counter."_".$innerCounter."_".$innerInnerCounter); ?>"><a href="javascript:DeactivateSource('<?php echo($counter."_".$innerCounter."_".$innerInnerCounter); ?>', '<?php echo($source->id); ?>')">deactivate?</a></span>
-                                            <span class="active" style="<?php echo(!$source->active ? "display:inline" : "display:none"); ?>" id="inactive_<?php echo($counter."_".$innerCounter."_".$innerInnerCounter); ?>"><a href="javascript:ActivateSource('<?php echo($counter."_".$innerCounter."_".$innerInnerCounter); ?>', '<?php echo($source->id); ?>')">activate?</a></span>
+                                            <span class="active" style="<?php echo(!$source->active ? "display:inline" : "display:none"); ?>" id="inactive_<?php echo($counter."_".$innerCounter."_".$innerInnerCounter); ?>"><a href="javascript:ActivateSource('<?php echo($counter."_".$innerCounter."_".$innerInnerCounter); ?>', '<?php echo($source->id); ?>')">actiavte?</a></span>
                                         </li>
                                     <?php $innerInnerCounter++; ?>
                                     <?php endforeach; ?>

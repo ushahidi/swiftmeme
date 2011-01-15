@@ -209,7 +209,7 @@ function DeactivateSource(number, id) {
 // CONTENT LIST
 function Update() {
     var url = baseurl.replace("/web", "");
-    $.post(url + "core/api/channelservices/runnextchannel.php",{ key : "swiftriver_dev" });
+    $.post(url + "core/ServiceAPI/ChannelServices/RunNextChannel.php",{ key : "swiftriver_dev" });
 }
 
 function ShowAddChannelModal(type, subType) {

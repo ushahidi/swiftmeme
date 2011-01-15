@@ -1,44 +1,68 @@
+<?php
+    $json_decoded = json_decode($json);
+    $json_data = $json_decoded->data;
+
+    if(is_null($json_data) || $json_data == "null") {
+
+        // There should not be anything else to display
+        echo('<div style="text-align:center;font-weight:bold;">ACTIVE SOURCES</div><div style="text-align:center;">No data to display</div>');
+    }
+    else {
+        $channels = array();
+        $sources = array();
+
+        // Fill in the channel and source names
+        foreach($json_data as $data_item) {
+            $channel_exists = false;
+            $source_exists = false;
+
+            foreach($channels as $channel) {
+                if($channel == $data_item->channelName)
+                    $channel_exists = true;
+            }
+
+            foreach($sources as $source) {
+                if($source == $data_item->sourceName)
+                    $source_exists = true;
+            }
+
+            if(!$channel_exists) {
+                $channels[] = $data_item->channelName;
+            }
+
+            if(!$source_exists) {
+                $sources[] = $data_item->sourceName;
+            }
+        }
+?>
 <div style="text-align:center;font-weight:bold;">ACTIVE SOURCES</div>
 <script type="text/javascript+protovis">
+
+<?php
+        $channel_list = "";
+
+        foreach($channels as $channel) {
+            $channel_list.='"'.$channel.'",';
+        }
+
+        rtrim($channel_list, ",");
+?>
     // Prepare the data
-    var causes2 = ["wounds", "other", "disease"];
+    var source_channels = [<?php echo($channel_list);?>];
 
-    var crimea2 = [
-      { date: "4/1854", wounds: 0, other: 110, disease: 110 },
-      { date: "5/1854", wounds: 0, other: 95, disease: 105 },
-      { date: "6/1854", wounds: 0, other: 40, disease: 95 },
-      { date: "7/1854", wounds: 0, other: 140, disease: 520 },
-      { date: "8/1854", wounds: 20, other: 150, disease: 800 },
-      { date: "9/1854", wounds: 220, other: 230, disease: 740 },
-      { date: "10/1854", wounds: 305, other: 310, disease: 600 },
-      { date: "11/1854", wounds: 480, other: 290, disease: 820 },
-      { date: "12/1854", wounds: 295, other: 310, disease: 1100 },
-      { date: "1/1855", wounds: 230, other: 460, disease: 1440 },
-      { date: "2/1855", wounds: 180, other: 520, disease: 1270 },
-      { date: "3/1855", wounds: 155, other: 350, disease: 935 },
-      { date: "4/1855", wounds: 195, other: 195, disease: 560 },
-      { date: "5/1855", wounds: 180, other: 155, disease: 550 },
-      { date: "6/1855", wounds: 330, other: 130, disease: 650 },
-      { date: "7/1855", wounds: 260, other: 130, disease: 430 },
-      { date: "8/1855", wounds: 290, other: 110, disease: 490 },
-      { date: "9/1855", wounds: 355, other: 100, disease: 290 },
-      { date: "10/1855", wounds: 135, other: 95, disease: 245 },
-      { date: "11/1855", wounds: 100, other: 140, disease: 325 },
-      { date: "12/1855", wounds: 40, other: 120, disease: 215 },
-      { date: "1/1856", wounds: 0, other: 160, disease: 160 },
-      { date: "2/1856", wounds: 0, other: 100, disease: 100 },
-      { date: "3/1856", wounds: 0, other: 125, disease: 90 }
+    var source_channels_data = [
+<?php
+        // Fill in the channel names
+        foreach($json_data as $data_item) {
+            echo('{ dayOfYear: '.$data_item->dayOfTheYear.', '.$data_item->channelName.': "'.$data_item->numberOfSources.'"},\n');
+        }
+?>
     ];
-
-    (function() {
-      var format = pv.Format.date("%m/%y");
-      crimea2.forEach(function(d) { d.date = format.parse(d.date); });
-    })();
 
     // Render the graph
     var w = 250,
         h = 100,
-        x = pv.Scale.linear(crimea2, function(d) d.date).range(0, w),
+        x = pv.Scale.linear(source_channels_data, function(d) d.date).range(0, w),
         y = pv.Scale.linear(0, 1500).range(0, h),
         fill = pv.colors("lightpink", "darkgray", "lightblue"),
         format = pv.Format.date("%b");
@@ -50,9 +74,9 @@
         .right(40);
 
     vis2.add(pv.Panel)
-        .data(causes2)
+        .data(source_channels)
       .add(pv.Line)
-        .data(crimea2)
+        .data(source_channels_data)
         .left(function(d) x(d.date))
         .bottom(function(d, t) y(d[t]))
         .strokeStyle(fill.by(pv.parent))
@@ -76,3 +100,6 @@
 
     vis2.render();
 </script>
+<?php
+    }
+?>

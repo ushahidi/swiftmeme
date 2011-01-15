@@ -2,7 +2,7 @@
 RewriteEngine On
 
 # Installation directory
-RewriteBase /web/ 
+RewriteBase /swiftmeme/web/ 
 
 # Protect hidden files from being viewed
 <Files .*>

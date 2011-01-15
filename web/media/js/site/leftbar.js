@@ -6,9 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function MapViewWidget(baseUrl, widgetID) {
+function MapViewWidget(baseUrl, widgetID, state, minVeracity, maxVeracity, type, subType,
+                          source, pageSize, pageStart, orderBy) {
     this.RenderView = function() {
-        $.get(baseUrl + "api/maps/get/" + widgetID,
+        $.get(baseUrl + "api/maps/get/" + state + "/" + minVeracity + "/" + maxVeracity + "/" + type + "/" + subType +
+                "/" + source + "/" + pageSize + "/" + pageStart + "/" + orderBy + "/",
             function(mapTemplate) {
                 $(widgetID).html(mapTemplate);
             }
