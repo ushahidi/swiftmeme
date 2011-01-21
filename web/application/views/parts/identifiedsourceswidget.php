@@ -133,7 +133,7 @@
 ?>
 <div class="widget-seperator"></div>
 <div class="widget-box">
-    <div style="text-align:center;font-weight:bold;">IDENTIFIED SOURCES</div>
+    <h2 class="widget-title">IDENTIFIED SOURCES</h2>
     <br/>
 <?php
         if($isloggedin) {

@@ -97,6 +97,8 @@
 
 <div class="widget-seperator"></div>
 <div class="widget-box">
+	<h2 class="widget-title">ENTER KEYWORDS</h2>
+	<br />
     <div>
 <?php
         if($isloggedin) {

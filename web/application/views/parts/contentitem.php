@@ -66,7 +66,8 @@
                         </h2>
                         <?php if(isset($content->text[$i]->text)) : ?>
                             <?php foreach($content->text[$i]->text as $text) : ?>
-                                <p class="text"><?php echo($text); ?></p>
+					<!-- Hiding Text from View -->
+                                <p style="display:none;"><?php echo($text); ?></p>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </div>

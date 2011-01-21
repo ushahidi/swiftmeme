@@ -54,7 +54,7 @@
 <?php
         // Fill in the channel names
         foreach($json_data as $data_item) {
-            echo('{ dayOfYear: '.$data_item->dayOfTheYear.', '.$data_item->channelName.': "'.$data_item->numberOfSources.'"},\n');
+            echo('{dayOfYear: '.$data_item->dayOfTheYear.', '.$data_item->channelName.': "'.$data_item->numberOfSources.'"},');
         }
 ?>
     ];

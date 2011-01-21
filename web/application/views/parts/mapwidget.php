@@ -12,9 +12,9 @@
 ?>
 <html>
   <head>
-    <title>Content item mapping</title>
-    <?php echo(Html::script("media/js/protovis/protovis-r3.2.js")); ?>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAYZ9eMYFYusxZt-1RKXLI7RQGpXqX26B62_lhdlIUxPTUm0CSORRw1BkwdprB1xQ3Xa8KfbgKAacxlw" type="text/javascript"></script>
+    <title>Content Item mapping</title>
+    <?php echo(Html::script('media/js/protovis/protovis-r3.2.js')); ?>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA_l8gzbi6C7crybKcN7JbkxQ52V7FrU9BtBAX9VeidCyofjK-ERTUSK0vM-1ZP1eEA-Q1Rh5jyj_D9A" type="text/javascript"></script>
     <style type="text/css">
         body {
           margin: 0;
