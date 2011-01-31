@@ -24,7 +24,6 @@
         <?php echo(Html::script("media/js/site/leftbar.js")); ?>
         <?php echo(Html::script("media/js/site/rightbar.js")); ?>
         <?php echo(Html::script("media/js/css_browser_selector.js")); ?>
-        <?php echo(Html::script("media/js/protovis/protovis-r3.2.js")); ?>
 
         <?php echo(Html::style("media/css/plugins/jquery.ui.css")); ?>
         <?php echo(Html::style("media/css/plugins/jquery.treeview.css")); ?>
@@ -48,6 +47,7 @@
 
         <script type="text/javascript" language="javascript">
             //Init the Shadowbox plugin
+            
             Shadowbox.init({skipSetup:true});
             $(document).ready(function(){
                 $("div#nav-container").corner("5px");

@@ -38,7 +38,7 @@
                 <label for="name">The name of the feed:</label>
                 <input type="text" name="name" class="required" />
             </div>
-            <?php foreach($channel->configurationProperties as $key => $properties) : ?>
+            <?php foreach($source->configurationProperties as $key => $properties) : ?>
                 <?php if($subType == $key) : ?>
                     <?php foreach($properties as $property) : ?>
                         <div class="form-row">
