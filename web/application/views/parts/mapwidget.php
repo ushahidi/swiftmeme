@@ -9,12 +9,15 @@
         $content_exists = true;
         $content_items = $json_decoded->data->sources;
     }
+
+    $center_lat = 0;
+    $center_lon = 0;
+
+    $first_round = true;
 ?>
 <html>
   <head>
     <title>Content Item mapping</title>
-    <?php echo(Html::script('media/js/protovis/protovis-r3.2.js')); ?>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA_l8gzbi6C7crybKcN7JbkxQ52V7FrU9BtBAX9VeidCyofjK-ERTUSK0vM-1ZP1eEA-Q1Rh5jyj_D9A" type="text/javascript"></script>
     <style type="text/css">
         body {
           margin: 0;
@@ -28,13 +31,21 @@
           position: absolute;
         }
     </style>
-    <script type="text/javascript+protovis">
-
+    <!-- Google maps -->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <!-- Map code -->
+    <script type="text/javascript">
 <?php
     if($content_exists) {
 ?>
+        var map;
 
-    var source_locations = [
+        function addMarkers() {
+            var bounds = map.getBounds();
+            var southWest = bounds.getSouthWest();
+            var northEast = bounds.getNorthEast();
+            var lngSpan = northEast.lng() - southWest.lng();
+            var latSpan = northEast.lat() - southWest.lat();
 <?php
         $current_item = 0;
         foreach($content_items as $content_item) {
@@ -44,92 +55,49 @@
                 $current_item ++;
                 if(is_array($content_item->gisData)) {
                     if(isset($content_item->gisData[0]->latitude) && isset($content_item->gisData[0]->longitude)) {
+                        // Center coordinates
+                        if($first_round) {
+                            $center_lat = $content_item->gisData[0]->latitude;
+                            $center_lon = $content_item->gisData[0]->longitude;
+
+                            $first_round = false;
+                        }
 ?>
-      { id: "<?php echo($current_item); ?>", code: "Tw", date: "<?php echo($item_date); ?>", lat: <?php echo($content_item->gisData[0]->latitude); ?>, lon: <?php echo($content_item->gisData[0]->longitude); ?> },
+            // Add the coordinates / Markers at this point
+
+            var latLng_<?php echo($current_item); ?> = new google.maps.LatLng(<?php echo($$content_item->gisData[0]->latitude); ?>,
+                                              <?php echo($$content_item->gisData[0]->longitude); ?>);
+            var marker_<?php echo($current_item); ?> = new google.maps.Marker({
+                position: latLng_<?php echo($current_item); ?>,
+                map: map
+            });
 <?php
                     }
                 }
-
             }
         }
 ?>
-    ];
+        }
 
-    var source_codes = [
-      { code: "Tw", name: "Tweet", category: "tweet" },
-    ];
+        function initialize() {
+            var mapDiv = document.getElementById('map-canvas');
+            map = new google.maps.Map(mapDiv, {
+              center: new google.maps.LatLng(<?php echo($center_lat); ?>, <?php echo($center_lon); ?>),
+              zoom: 13,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
 
-    var colors = {
-      tweet: { light: "rgba(217, 0, 0, .8)", dark: "rgb(163, 0, 0)" },
-    };
+            google.maps.event.addListenerOnce(map, 'tilesloaded', addMarkers);
+        }
 
-    source_codes.forEach(function(x) colors[x.code] = colors[x.category]);
-
-    function Canvas(source_locations) {
-      this.source_locations = source_locations;
-    }
-
-    Canvas.prototype = pv.extend(GOverlay);
-
-    Canvas.prototype.initialize = function(map) {
-      this.map = map;
-      this.canvas = document.createElement("div");
-      this.canvas.setAttribute("class", "canvas");
-      map.getPane(G_MAP_MAP_PANE).parentNode.appendChild(this.canvas);
-    };
-
-    Canvas.prototype.redraw = function(force) {
-      if (!force) return;
-      var c = this.canvas, m = this.map, r = 20;
-
-      /* Get the pixel locations of the crimes. */
-      var pixels = this.source_locations.map(function(d) {
-          return m.fromLatLngToDivPixel(new GLatLng(d.lat, d.lon));
-        });
-
-      /* Update the canvas bounds. Note: may be large. */
-      function x(p) p.x; function y(p) p.y;
-      var x = { min: pv.min(pixels, x) - r, max: pv.max(pixels, x) + r };
-      var y = { min: pv.min(pixels, y) - r, max: pv.max(pixels, y) + r };
-      c.style.width = (x.max - x.min) + "px";
-      c.style.height = (y.max - y.min) + "px";
-      c.style.left = x.min + "px";
-      c.style.top = y.min + "px";
-
-      /* Render the visualization. */
-      new pv.Panel()
-          .canvas(c)
-          .left(-x.min)
-          .top(-y.min)
-        .add(pv.Panel)
-          .data(this.source_locations)
-        .add(pv.Dot)
-          .left(function() pixels[this.parent.index].x)
-          .top(function() pixels[this.parent.index].y)
-          .strokeStyle(function(x, d) colors[d.code].dark)
-          .fillStyle(function(x, d) colors[d.code].light)
-          .size(140)
-        .anchor("center").add(pv.Label)
-          .textStyle("white")
-          .text(function(x, d) d.code)
-        .root.render();
-    };
-
-    /* Restrict minimum and maximum zoom levels. */
-    G_NORMAL_MAP.getMinimumResolution = function() 11;
-    G_NORMAL_MAP.getMaximumResolution = function() 14;
-
-    var map = new GMap2(document.getElementById("map"));
-    map.setCenter(new GLatLng(37.78, -122.22), 12);
-    map.setUI(map.getDefaultUI());
-    map.addOverlay(new Canvas(source_locations));
-
+        google.maps.event.addDomListener(window, 'load', initialize);
 <?php
     }
 ?>
     </script>
   </head>
   <body onunload="GUnload()">
-    <div id="map"></div>
+    <!-- Place the map div here -->
+    <div id="map-canvas" style="width: 200px; height: 150px"></div>
   </body>
 </html>

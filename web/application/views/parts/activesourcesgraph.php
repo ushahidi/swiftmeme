@@ -104,6 +104,21 @@
                 $peak_statistic = $statistic;
             }
         }
+        
+        // Some important global variables (for this page)
+
+        $current_date = intval(date('d'));
+
+        $flows_to_next_month = false;
+
+        $last_new_month_day =  $current_date;
+        $first_old_month_day = $max_day_range - ($timelimit - $last_new_month_day);
+
+        $min_day_range = $first_old_month_day;
+
+        if(($last_new_month_day - $timelimit) < 0) {
+            $flows_to_next_month = true;
+        }
 ?>
 <script type="text/javascript">
     // Prepare the data
@@ -116,11 +131,27 @@
 
         foreach($days_data as $day_data) {
             // Construct an "each day" entry
-            if(isset($source[$day_data])) {
-                $var_entries.="[".$day_data.", ".$source[$day_data]."],";
+            if(!$flows_to_next_month) {
+                if(isset($source[$day_data])) {
+                    $var_entries.="[".$day_data.", ".$source[$day_data]."],";
+                }
+                else {
+                    $var_entries.="[".$day_data.", 0],";
+                }
             }
             else {
-                $var_entries.="[".$day_data.", 0],";
+                $new_day = $day_data;
+
+                if(intval($day_data) <= $last_new_month_day) {
+                    $new_day = $day_data + $max_day_range;
+                }
+
+                if(isset($channel[$day_data])) {
+                    $var_entries.="[".$new_day.", ".$source[$day_data]."],";
+                }
+                else {
+                    $var_entries.="[".$new_day.", 0],";
+                }
             }
         }
 
@@ -152,8 +183,22 @@
 <?php
     $tick_entries = "";
 
-    foreach($days_data as $day_data) {
-        $tick_entries.="\t\t\t\t[".$day_data.",'".$day_data."'],\n";
+    if(!$flows_to_next_month) {
+        foreach($days_data as $day_data) {
+            $tick_entries.="\t\t\t\t[".$day_data.",'".$day_data."'],\n";
+        }
+    }
+    else {
+        // Some computation needed here
+
+        for($old_month_loop = $first_old_month_day; $old_month_loop <= $max_day_range; $old_month_loop ++) {
+            $tick_entries.="\t\t\t\t[".$old_month_loop.",'".$old_month_loop."'],\n";
+        }
+
+        for($new_month_loop = 1; $new_month_loop <= $last_new_month_day; $new_month_loop ++) {
+            $new_day = $new_month_loop + $max_day_range;
+            $tick_entries.="\t\t\t\t[".$new_day.",'".$new_month_loop."'],\n";
+        }
     }
 
     $tick_entries = rtrim($tick_entries, ",\n");
