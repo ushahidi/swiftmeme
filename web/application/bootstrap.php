@@ -131,6 +131,13 @@ Route::set('api-activesources', 'api/activesources/get')
             'action' => 'getsources',
         ));
 
+Route::set('api-activesources-test', 'api/activesources/test')
+        ->defaults(array(
+            'directory' => 'api',
+            'controller' => 'activesources',
+            'action' => 'test',
+        ));
+
 Route::set('api-activesources-graph', 'api/activesources/graph')
         ->defaults(array(
             'directory' => 'api',
@@ -171,6 +178,13 @@ Route::set('api-trendingkeywords', 'api/trendingkeywords/get')
             'directory' => 'api',
             'controller' => 'trendingkeywords',
             'action' => 'getkeywords',
+        ));
+
+Route::set('api-trendingkeywords-test', 'api/trendingkeywords/test')
+        ->defaults(array(
+            'directory' => 'api',
+            'controller' => 'trendingkeywords',
+            'action' => 'test',
         ));
 
 Route::set('api-trendingkeywords-graph', 'api/trendingkeywords/graph')

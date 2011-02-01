@@ -8,7 +8,6 @@
             var baseurl = "<?php echo(url::base()); ?>";
             var imageurl = baseurl + "/media/images/";
         </script>
-        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAYZ9eMYFYusxZt-1RKXLI7RQGpXqX26B62_lhdlIUxPTUm0CSORRw1BkwdprB1xQ3Xa8KfbgKAacxlw" type="text/javascript"></script>
         <?php echo(Html::script("media/js/jquery.js")); ?>
         <?php echo(Html::script("media/js/jquery.ui.js")); ?>
         <?php echo(Html::script("media/js/jquery.treeview.js")); ?>

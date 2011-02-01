@@ -96,7 +96,7 @@
 ?>
     </script>
   </head>
-  <body onunload="GUnload()">
+  <body>
     <!-- Place the map div here -->
     <div id="map-canvas" style="width: 200px; height: 150px"></div>
   </body>

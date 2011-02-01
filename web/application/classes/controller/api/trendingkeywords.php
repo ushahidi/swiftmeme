@@ -21,4 +21,15 @@ class Controller_Api_TrendingKeywords extends Controller
 
         $this->request->response = $trendingkeywords;
     }
+
+    public function action_test()
+    {
+        // Get the graph - for the past 7 days
+        $time_limit = 7;
+        $trendingkeywords_params = array("RequestType" => "ContentByChannelOverTime", "Parameters" => array("TimeLimit" => $time_limit));
+        $json_encoded_params = json_encode($trendingkeywords_params);
+        $trendingkeywords_json = Analytics::analytics_api()->get_analysis($json_encoded_params);
+
+        echo($trendingkeywords_json);
+    }
 }
