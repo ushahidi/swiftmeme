@@ -121,9 +121,11 @@
 
             $min_day_range = $first_old_month_day;
 
-            if(($last_new_month_day - $timelimit) < 0) {
+            if(($last_new_month_day - count($days_data)) < 0) {
                 $flows_to_next_month = true;
             }
+
+            $min_day_range = ($min_day_range - 1) + ((count($days_data) - $timelimit) * -1);
 ?>
 <script type="text/javascript">
     // Prepare the data
@@ -193,7 +195,7 @@
         if(!$flows_to_next_month) {
             // Do the normal graph
             foreach($days_data as $day_data) {
-                $tick_entries.="\t\t\t\t[".$day_data.",'".$day_data."'],\n";
+                $tick_entries.="\t\t\t\t[".$day_data.",'".intval($day_data)."'],\n";
             }
         }
         else {
@@ -220,7 +222,22 @@
             grid: {
                 drawXAxis: true,
                 drawYAxis: true
+<?php
+    if(count($days_data) == 1) {
+            // If theres only one day we cant show a graph. Plot points
+?>
+            },
+            points: {
+                show: true
             }
+<?php
+    }
+    else {
+?>
+            }
+<?php
+    }
+?>
         });
     });
 </script>
