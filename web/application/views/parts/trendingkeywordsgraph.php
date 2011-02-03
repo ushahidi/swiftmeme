@@ -119,13 +119,18 @@
             $last_new_month_day =  $current_date;
             $first_old_month_day = $max_day_range - ($timelimit - $last_new_month_day);
 
-            $min_day_range = $first_old_month_day;
+            // $min_day_range = $first_old_month_day;
 
             if(($last_new_month_day - count($days_data)) < 0) {
                 $flows_to_next_month = true;
             }
 
-            $min_day_range = ($min_day_range - 1) + ((count($days_data) - $timelimit) * -1);
+            /*
+            if($min_day_range < 0) {
+                $min_day_range = $min_day_range + ($timelimit - count($days_data));
+            }
+             * 
+             */
 ?>
 <script type="text/javascript">
     // Prepare the data
