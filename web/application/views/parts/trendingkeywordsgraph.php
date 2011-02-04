@@ -121,7 +121,7 @@
 
             if(($last_new_month_day - count($days_data)) < 0) {
                 $flows_to_next_month = true;
-                $min_day_range = $first_old_month_day;
+                $min_day_range = $first_old_month_day + 1;
             }
 ?>
 <script type="text/javascript">
