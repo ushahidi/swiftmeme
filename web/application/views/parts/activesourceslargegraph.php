@@ -209,6 +209,9 @@
 ?>
                 ]
             },
+            legend: {
+                show: true
+            },
             yaxis: {
                 max: <?php echo($peak_statistic); ?>
             },
@@ -223,7 +226,7 @@
             },
             points: {
                 show: true
-            }
+            },
 <?php
     }
     else {
@@ -240,5 +243,5 @@
         }
     }
 ?>
-<a href="<?php echo(url::base()."api/activesources/largegraph") ?>" target="blank" style="text-decoration:none;"><div id="barchart" style="width:200px;height:200px"></div></a>
+<div id="barchart" style="width:700px;height:500px"></div>
 </body>

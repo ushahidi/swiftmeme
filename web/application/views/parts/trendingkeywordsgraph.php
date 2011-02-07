@@ -243,5 +243,5 @@
         }
     }
 ?>
-<div id="barchart" style="width:200px;height:200px"></div>
+<a href="<?php echo(url::base()."api/trendingkeywords/largegraph") ?>" target="blank" style="text-decoration:none;"><div id="barchart" style="width:200px;height:200px"></div></a>
 </body>

@@ -6,6 +6,7 @@
 <?php
     $json_decoded = json_decode($json);
     $json_data = $json_decoded->data;
+    $sample_channel_name = "";
 
     $min_day_range = 0;
     $max_day_range = 0;
@@ -17,12 +18,12 @@
         echo('<div style="text-align:center;">No data to display</div>');
     }
     else {
+        // Process the content items
         if(count($json_data) == 0) {
             echo('<div style="text-align:center;">No data to display</div>');
         }
         else {
-            // Process the content items
-            $source_data = array();
+            $channel_data = array();
             $days_data = array();
             $first_round = true;
 
@@ -30,15 +31,15 @@
                 $day_of_year = explode("-", $data_item->dayOfTheYear);
                 $day_of_year = $day_of_year[0];
 
-                $number_of_content_items = $data_item->numberOfSources;
+                $number_of_content_items = $data_item->numberOfContentItems;
                 $channel_id = $data_item->channelId;
-                $source_name = $data_item->sourceName;
+                $channel_name = $data_item->channelName;
 
                 // Create a "clean" channel name
-                $source_name = str_replace("@", "", $source_name);
-                $source_name = str_replace(" ", "_", $source_name);
+                $channel_name = str_replace("@", "", $channel_name);
+                $channel_name = str_replace(" ", "_", $channel_name);
 
-                $source_exists = false;
+                $channel_exists = false;
                 $day_exists = false;
 
                 $day_exists_in_array = false;
@@ -51,13 +52,13 @@
 
                 // Check: to see if a channel exists
 
-                foreach($source_data as $source) {
-                    if(isset($source[$source_name]["channel_name"])) {
+                foreach($channel_data as $channel) {
+                    if(isset($channel[$channel_name]["channel_name"])) {
                         // The channel we want exists
-                        $source_exists = true;
+                        $channel_exists = true;
 
-                        foreach($source[$source_name] as $source_data_entry) {
-                            if(isset($source_data_entry[$day_of_year]))
+                        foreach($channel[$channel_name] as $channel_data_entry) {
+                            if(isset($channel_data_entry[$day_of_year]))
                                 // The channel we want has an entry for the date
                                 $day_exists = true;
                         }
@@ -89,20 +90,20 @@
 
                 // Insert data into our data array
 
-                if($source_exists) {
+                if($channel_exists) {
                     if($day_exists) {
-                        $source_data[$source_name][$day_of_year] += intval($number_of_content_items);
+                        $channel_data[$channel_name][$day_of_year] += intval($number_of_content_items);
                     }
                     else {
-                        $source_data[$source_name][$day_of_year] = intval($number_of_content_items);
+                        $channel_data[$channel_name][$day_of_year] = intval($number_of_content_items);
                     }
                 }
                 else {
-                    $source_data[$source_name]["source_name"] = $source_name;
-                    $source_data[$source_name][$day_of_year] = intval($number_of_content_items);
+                    $channel_data[$channel_name]["channel_name"] = $channel_name;
+                    $channel_data[$channel_name][$day_of_year] = intval($number_of_content_items);
                 }
 
-                $statistic = $source_data[$source_name][$day_of_year];
+                $statistic = $channel_data[$channel_name][$day_of_year];
 
                 if($statistic > $peak_statistic) {
                     $peak_statistic = $statistic;
@@ -128,15 +129,15 @@
 <?php
         $var_entries = "";
 
-        foreach($source_data as $source) {
+        foreach($channel_data as $channel) {
             // Construct a new variable for a new channel
-            $var_entries.="\tvar ".$source["source_name"]." = [";
+            $var_entries.="\tvar ".$channel["channel_name"]." = [";
 
             foreach($days_data as $day_data) {
                 // Construct an "each day" entry
                 if(!$flows_to_next_month) {
-                    if(isset($source[$day_data])) {
-                        $var_entries.="[".$day_data.", ".$source[$day_data]."],";
+                    if(isset($channel[$day_data])) {
+                        $var_entries.="[".$day_data.", ".$channel[$day_data]."],";
                     }
                     else {
                         $var_entries.="[".$day_data.", 0],";
@@ -150,7 +151,7 @@
                     }
 
                     if(isset($channel[$day_data])) {
-                        $var_entries.="[".$new_day.", ".$source[$day_data]."],";
+                        $var_entries.="[".$new_day.", ".$channel[$day_data]."],";
                     }
                     else {
                         $var_entries.="[".$new_day.", 0],";
@@ -168,14 +169,14 @@
         new Proto.Chart($('barchart'),
         [
 <?php
-        $data_entries = "";
+    $data_entries = "";
 
-        foreach($source_data as $source) {
-            $data_entries.="\t\t{data:". $source["source_name"].", label:\"".$source["source_name"]."\"},\n";
-        }
+    foreach($channel_data as $channel) {
+        $data_entries.="\t\t{data:". $channel["channel_name"].", label:\"".$channel["channel_name"]."\"},\n";
+    }
 
-        $data_entries = rtrim($data_entries, ",\n");
-        echo($data_entries."\n");
+    $data_entries = rtrim($data_entries, ",\n");
+    echo($data_entries."\n");
 ?>
         ],
         {
@@ -186,7 +187,10 @@
 <?php
         $tick_entries = "";
 
+        $start_day = $min_day_range;
+
         if(!$flows_to_next_month) {
+            // Do the normal graph
             foreach($days_data as $day_data) {
                 $tick_entries.="\t\t\t\t[".$day_data.",'".intval($day_data)."'],\n";
             }
@@ -209,13 +213,15 @@
 ?>
                 ]
             },
+            legend: {
+                show: true
+            },
             yaxis: {
                 max: <?php echo($peak_statistic); ?>
             },
             grid: {
                 drawXAxis: true,
                 drawYAxis: true
-
 <?php
     if(count($days_data) == 1) {
             // If theres only one day we cant show a graph. Plot points
@@ -223,7 +229,7 @@
             },
             points: {
                 show: true
-            }
+            },
 <?php
     }
     else {
@@ -236,9 +242,9 @@
     });
 </script>
 <?php
-            // End of data display
+        // End of data display
         }
     }
 ?>
-<a href="<?php echo(url::base()."api/activesources/largegraph") ?>" target="blank" style="text-decoration:none;"><div id="barchart" style="width:200px;height:200px"></div></a>
+<div id="barchart" style="width:700px;height:500px"></div>
 </body>

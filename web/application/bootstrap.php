@@ -145,6 +145,13 @@ Route::set('api-activesources-graph', 'api/activesources/graph')
             'action' => 'getgraph',
         ));
 
+Route::set('api-activesources-large-graph', 'api/activesources/largegraph')
+        ->defaults(array(
+            'directory' => 'api',
+            'controller' => 'activesources',
+            'action' => 'getlargegraph',
+        ));
+
 Route::set('api-filterview', 'api/filterview/get/<state>/<minVeracity>/<maxVeracity>/<type>/<subType>/<source>/<pageSize>/<pageStart>/<orderBy>')
         ->defaults(array(
             'directory' => 'api',
@@ -192,6 +199,13 @@ Route::set('api-trendingkeywords-graph', 'api/trendingkeywords/graph')
             'directory' => 'api',
             'controller' => 'trendingkeywords',
             'action' => 'getgraph',
+        ));
+
+Route::set('api-trendingkeywords-large-graph', 'api/trendingkeywords/largegraph')
+        ->defaults(array(
+            'directory' => 'api',
+            'controller' => 'trendingkeywords',
+            'action' => 'getlargegraph',
         ));
 
 Route::set('api-getcommontags', "api/tags/common/get")
