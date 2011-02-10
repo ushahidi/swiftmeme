@@ -4,127 +4,22 @@
 </head>
 <body>
 <?php
-    $json_decoded = json_decode($json);
-    $json_data = $json_decoded->data;
+    $source_data = $params["source_data"];
+    $days_data = $params["days_data"];
+    $flows_to_next_month = $params["flows_to_next_month"];
+    $data_exists = $params["data_exists"];
 
-    $min_day_range = 0;
-    $max_day_range = 0;
+    $min_day_range = $params["min_day_range"];
+    $max_day_range = $params["max_day_range"];
+    $peak_statistic = $params["peak_statistic"];
 
-    $peak_statistic = 0;
-
-    if(is_null($json_data) || $json_data == "null") {
-        // There should not be anything else to display
+    if(!$data_exists) {
         echo('<div style="text-align:center;">No data to display</div>');
     }
     else {
-        if(count($json_data) == 0) {
-            echo('<div style="text-align:center;">No data to display</div>');
-        }
-        else {
-            // Process the content items
-            $source_data = array();
-            $days_data = array();
-            $first_round = true;
-
-            foreach($json_data as $data_item) {
-                $day_of_year = explode("-", $data_item->dayOfTheYear);
-                $day_of_year = $day_of_year[0];
-
-                $number_of_content_items = $data_item->numberOfSources;
-                $channel_id = $data_item->channelId;
-                $source_name = $data_item->sourceName;
-
-                // Create a "clean" channel name
-                $source_name = str_replace("@", "", $source_name);
-                $source_name = str_replace(" ", "_", $source_name);
-
-                $source_exists = false;
-                $day_exists = false;
-
-                $day_exists_in_array = false;
-
-                if($first_round) {
-                    $min_day_range = intval($day_of_year);
-
-                    $first_round = false;
-                }
-
-                // Check: to see if a channel exists
-
-                foreach($source_data as $source) {
-                    if(isset($source[$source_name]["channel_name"])) {
-                        // The channel we want exists
-                        $source_exists = true;
-
-                        foreach($source[$source_name] as $source_data_entry) {
-                            if(isset($source_data_entry[$day_of_year]))
-                                // The channel we want has an entry for the date
-                                $day_exists = true;
-                        }
-                    }
-                }
-
-                // Check: to see if the day exists in our array
-
-                foreach($days_data as $day_data) {
-                    if($day_data == $day_of_year)
-                        $day_exists_in_array = true;
-                }
-
-                // Insert day of year in days array if not existent
-
-                if(!$day_exists_in_array) {
-                    $days_data[] = $day_of_year;
-                }
-
-                // Check for min and max day values
-
-                if(intval($day_of_year) < $min_day_range) {
-                    $min_day_range = intval($day_of_year);
-                }
-
-                if(intval($day_of_year) > $max_day_range) {
-                    $max_day_range = intval($day_of_year);
-                }
-
-                // Insert data into our data array
-
-                if($source_exists) {
-                    if($day_exists) {
-                        $source_data[$source_name][$day_of_year] += intval($number_of_content_items);
-                    }
-                    else {
-                        $source_data[$source_name][$day_of_year] = intval($number_of_content_items);
-                    }
-                }
-                else {
-                    $source_data[$source_name]["source_name"] = $source_name;
-                    $source_data[$source_name][$day_of_year] = intval($number_of_content_items);
-                }
-
-                $statistic = $source_data[$source_name][$day_of_year];
-
-                if($statistic > $peak_statistic) {
-                    $peak_statistic = $statistic;
-                }
-            }
-
-            // Some important global variables (for this page)
-
-            $current_date = intval(date('d'));
-
-            $flows_to_next_month = false;
-
-            $last_new_month_day =  $current_date;
-            $first_old_month_day = $max_day_range - ($timelimit - $last_new_month_day);
-
-            if(($last_new_month_day - count($days_data)) < 0) {
-                $flows_to_next_month = true;
-                $min_day_range = $first_old_month_day + 1;
-            }
 ?>
-<script type="text/javascript">
-    // Prepare the data
+    <script type="text/javascript">
+        // Prepare the data
 <?php
         $var_entries = "";
 
@@ -234,11 +129,10 @@
 ?>
         });
     });
-</script>
+    </script>
+    <a href="<?php echo(url::base()."api/activesources/largegraph") ?>" target="blank" style="text-decoration:none;"><div id="barchart" style="width:200px;height:200px"></div></a>
 <?php
-            // End of data display
-        }
+        // End of data display
     }
 ?>
-<a href="<?php echo(url::base()."api/activesources/largegraph") ?>" target="blank" style="text-decoration:none;"><div id="barchart" style="width:200px;height:200px"></div></a>
 </body>
