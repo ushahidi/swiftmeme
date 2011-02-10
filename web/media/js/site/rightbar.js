@@ -6,11 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function FilterViewWidget(baseUrl, widgetID, state, minVeracity, maxVeracity, type, subType,
-                          source, pageSize, pageStart, orderBy) {
+function FilterViewWidget(baseUrl, widgetID, data) {
     this.RenderView = function() {
-        $.get(baseUrl + "api/filterview/get/" + state + "/" + minVeracity + "/" + maxVeracity + "/" + type + "/" + subType +
-                "/" + source + "/" + pageSize + "/" + pageStart + "/" + orderBy + "/",
+        $.post(baseUrl + "api/filterview/get/", { postdata: data },
             function(filterViewTemplate) {
                 $(widgetID).html(filterViewTemplate);
             }

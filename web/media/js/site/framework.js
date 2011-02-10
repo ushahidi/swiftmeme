@@ -31,12 +31,18 @@ function ListController(baseUrl, subject, navContainer) {
      * ongoing ajax requests
      */
     this.currentRequests = new Object();
+
+    /**
+     * Object that contains the results from the call to the
+     * core api.
+     */
+    this.results = new Object();
     
     /**
      * Function for seeting new navigation settings to the List
      * @param navigationState NavigationState
      */
-    this.NavigationStateChange = function(navigationState){
+    this.NavigationStateChange = function(navigationState, dataFunction){
         //if the navigation state has not changed, return
         if(this.navigationState != null && this.navigationState.Equals(navigationState))
             return;
@@ -48,7 +54,7 @@ function ListController(baseUrl, subject, navContainer) {
         this.BeforListChanged();
 
         //Set list
-        this.RenderList(true);
+        this.RenderList(true, dataFunction);
 
         //Fire the after list set event
         this.AfterListChanged();
@@ -57,7 +63,7 @@ function ListController(baseUrl, subject, navContainer) {
     /**
      * Renders the list from an api call
      */
-    this.RenderList = function(rerenderNavigation) {
+    this.RenderList = function(rerenderNavigation, dataFunction) {
         //set the request Url
         var uri = this.baseUrl +
                   "api/contentselection/get/" +
@@ -73,6 +79,8 @@ function ListController(baseUrl, subject, navContainer) {
 
          //get the current array index
          this.currentRequests[uri] = $.getJSON(uri, function(data){
+            listController.results = data;
+            dataFunction();
 
             if(rerenderNavigation) {
                 listController.RenderNavigation(data.navigation);

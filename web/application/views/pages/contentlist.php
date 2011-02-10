@@ -11,10 +11,17 @@
     var nav_orderBy = '<?php echo(isset($_SESSION["nav_orderBy"]) ? $_SESSION["nav_orderBy"] : "null"); ?>';
     var nav_baseUrl = "<?php echo(url::base()); ?>";
     var render_firstload = true;
+
+    var listController;
+
     $(document).ready(function(){
         setInterval("Update()", 10000);
         listController = new ListController(nav_baseUrl, "div#content-list ul", "div#nav-container");
-        listController.NavigationStateChange(new NavigationState(nav_state, nav_minVeracity, nav_maxVeracity, nav_type, nav_subType, nav_source, nav_pageSize, nav_pageStart, nav_orderBy));
+        listController.NavigationStateChange(new NavigationState(nav_state, nav_minVeracity, nav_maxVeracity, nav_type, nav_subType, nav_source, nav_pageSize, nav_pageStart, nav_orderBy),
+            function() {
+                filterViewWidget = new FilterViewWidget(nav_baseUrl, "div#filter-view-widget", listController.results);
+                filterViewWidget.RenderView();
+            });
         $("#more_content a").attr("href", "javascript:MoreContent("+ nav_pageSize +")");
     });
 </script>

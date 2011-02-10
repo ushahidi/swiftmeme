@@ -152,11 +152,11 @@ Route::set('api-activesources-large-graph', 'api/activesources/largegraph')
             'action' => 'getlargegraph',
         ));
 
-Route::set('api-filterview', 'api/filterview/get/<state>/<minVeracity>/<maxVeracity>/<type>/<subType>/<source>/<pageSize>/<pageStart>/<orderBy>')
+Route::set('api-filterview-post', 'api/filterview/get')
         ->defaults(array(
             'directory' => 'api',
             'controller' => 'filterview',
-            'action' => 'getfilters',
+            'action' => 'getfilterpost',
         ));
 
 Route::set('api-identifiedsources', 'api/identifiedsources/get/<withcontrols>')
