@@ -24,6 +24,8 @@
         <?php echo(Html::script("media/js/site/rightbar.js")); ?>
         <?php echo(Html::script("media/js/css_browser_selector.js")); ?>
 
+        <?php echo(Html::script("media/js/jqplot/jquery.jqplot.min.js")."\n"); ?>
+
         <?php echo(Html::style("media/css/plugins/jquery.ui.css")); ?>
         <?php echo(Html::style("media/css/plugins/jquery.treeview.css")); ?>
         <?php echo(Html::style("media/css/plugins/shadowbox.css")); ?>

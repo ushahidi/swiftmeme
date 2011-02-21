@@ -170,29 +170,10 @@ class Controller_Api_ActiveSources extends Controller
 
     // Action functions
     public function action_getsources()
-    {   
-        $activesources = View::factory("parts/activesourceswidget");
-
-        // Render the graph
-        $this->request->response = $activesources;
-    }
-
-    public function action_getgraph()
-    {
-        // Get the graph - for the past 7 days
-        $time_limit = 7;
-
-        $activesources = View::factory("parts/activesourcesgraph")->set('params', $this->process_json($this->get_day_limit_json($time_limit), $time_limit));
-
-        // Render the graph
-        $this->request->response = $activesources;
-    }
-
-    public function action_getlargegraph()
     {
         $time_limit = 7;
 
-        $activesources = View::factory("parts/activesourceslargegraph")->set('params', $this->process_json($this->get_day_limit_json($time_limit), $time_limit));
+        $activesources = View::factory("parts/activesourceswidget")->set('params', $this->process_json($this->get_day_limit_json($time_limit), $time_limit));
 
         // Render the graph
         $this->request->response = $activesources;

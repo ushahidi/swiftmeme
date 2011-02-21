@@ -173,28 +173,11 @@ class Controller_Api_TrendingKeywords extends Controller
     
     public function action_getkeywords()
     {
-        $trendingkeywords = View::factory("parts/trendingkeywordswidget");
+        $time_limit = 7;
+
+        $trendingkeywords = View::factory("parts/trendingkeywordswidget")->set('params', $this->process_json($this->get_day_limit_json($time_limit), $time_limit));
+        
         // Render the graph
-        $this->request->response = $trendingkeywords;
-    }
-
-    public function action_getgraph()
-    {
-        // Get the graph - for the past 7 days
-        $time_limit = 7;
-
-        $trendingkeywords = View::factory("parts/trendingkeywordsgraph")->set('params', $this->process_json($this->get_day_limit_json($time_limit), $time_limit));
-
-        $this->request->response = $trendingkeywords;
-    }
-
-    public function action_getlargegraph()
-    {
-        // Get the graph - for the past 7 days
-        $time_limit = 7;
-
-        $trendingkeywords = View::factory("parts/trendingkeywordslargegraph")->set('params', $this->process_json($this->get_day_limit_json($time_limit), $time_limit));
-
         $this->request->response = $trendingkeywords;
     }
 
