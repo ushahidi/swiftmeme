@@ -1,4 +1,3 @@
-<script type="text/javascript">
 <?php
 /**
  * Created by JetBrains PhpStorm.
@@ -18,10 +17,12 @@
 
     asort($days_data);
 
-    if(!$data_exists) {
+    if(!$data_exists || ($min_day_range == $max_day_range)) {
         echo('<div style="text-align:center;">No data to display</div>');
     }
+    else {
 ?>
+<script type="text/javascript">
 <?php
     $var_entries = "";
 
@@ -117,3 +118,4 @@
         }
     });
 </script>
+<?php } ?>
