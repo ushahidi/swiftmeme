@@ -551,6 +551,14 @@ display: none !important;
 	background: url('media/images/buttons.png') 0 -128px no-repeat !important;
 }
 
+#content .actions li.star a {
+	background: url('media/images/buttons.png') -289px -262px no-repeat !important;
+}
+
+#content .actions li.star a:hover {
+	background: url('media/images/buttons.png') -289px -262px no-repeat !important;
+}
+
 #content .actions li.inaccurate a {
 	margin: 0 !important;
 	background: url('media/images/buttons.png') -116px -128px no-repeat !important;

@@ -3,6 +3,7 @@
         <div class="left-column">
             <div class="notch"></div>
             <div class="veracity">
+                <!--
                 <div class="badge">
                     <?php $content->source->ratings = 3; ?>
                     <?php if ($content->source->ratings > 2) : ?>
@@ -15,14 +16,12 @@
                         <p class="unknown">Unknown</p>
                     <?php endif; ?>
                 </div>
+                -->
                 <h2 class="<?php echo($content->source->id); ?>"><?php echo($content->source->score == "null")? "-" : $content->source->score;?></h2>
             </div>
             <?php if($enableActions) : ?>
                 <ol class="actions">
-                    <li class="accurate"><a href="javascript:listController.MarkContentAsAccurate('<?php echo($content->id); ?>')" title="Mark this content as acurate"><span>Mark as accurate</span></a></li>
-                    <li class="inaccurate"><a href="javascript:listController.MarkContentAsInaccurate('<?php echo($content->id); ?>')" title="Mark this content as inaccurate"><span>Mark as inaccurate</span></a></li>
-                    <li class="crosstalk"><a href="javascript:listController.MarkContentAsCrossTalk('<?php echo($content->id); ?>')" title="Mark this content as cross talk"><span>Mark as cross talk</span></a></li>
-                    <li class="flag"><a href="javascript:listController.MarkContentAsIrrelevant('<?php echo($content->id); ?>')" title="Mark this content as Irrelevant"><span>Mark as irrelevant</span></a></li>
+                    <li class="star"><a href="javascript:listController.MarkContentAsAccurate('<?php echo($content->id); ?>')" title="Star this content item"><span>Star this content item</span></a></li>
                 </ol>
             <?php endif; ?>
         </div>

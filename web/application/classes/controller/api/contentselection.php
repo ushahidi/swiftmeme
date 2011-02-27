@@ -15,6 +15,7 @@ class Controller_Api_ContentSelection extends Controller
         if($pageSize != null && $pageSize != "null")            $params["pageSize"] = (int)$pageSize;
         if($pageStart != null && $pageStart != "null")          $params["pageStart"] = (int)$pageStart;
         if($orderBy != null && $orderBy != "null")              $params["orderBy"] = $orderBy;
+        $params["time"] = time();
 
         $json_encoded_parameters = json_encode($params);
         $json = API::content_api()->get_content_list($json_encoded_parameters);

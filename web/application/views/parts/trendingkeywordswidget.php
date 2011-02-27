@@ -112,7 +112,7 @@
 ?>
         ],
         axes:{
-            xaxis:{ticks:tk_xticks}
+            xaxis:{ticks:tk_xticks,label:"Days of the month"}
         }
     });
 </script>
