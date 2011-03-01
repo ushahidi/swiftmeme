@@ -1,5 +1,5 @@
 <?php
-    $json_content = json_decode($json);
+    $json_content = json_decode($json["json"]);
 
     $first_col_items = "";
     $second_col_items = "";
@@ -17,6 +17,9 @@
         $second_column = false;
 
         foreach($json_tags as $tag) {
+            if($num_tags == intval($json["tag_count"]))
+                continue;
+            
             if(!$second_column) {
                 $first_col_items.= "<div><a id='lnk_".$num_tags."' href='#'>".$tag->name."</a></div>";
             }
@@ -31,17 +34,6 @@
 ?>
 
 <script type="text/javascript">
-    var nav_state = '<?php echo(isset($_SESSION["nav_state"]) ? $_SESSION["nav_state"] : $state); ?>'; <!-- changed -->
-    var nav_minVeracity = <?php echo(isset($_SESSION["nav_minVeracity"]) ? $_SESSION["nav_minVeracity"] : "0"); ?>;
-    var nav_maxVeracity = <?php echo(isset($_SESSION["nav_maxVeracity"]) ? $_SESSION["nav_maxVeracity"] : "100"); ?>;
-    var nav_type = '<?php echo(isset($_SESSION["nav_type"]) ? $_SESSION["nav_type"] : "null"); ?>';
-    var nav_subType = '<?php echo(isset($_SESSION["nav_subType"]) ? $_SESSION["nav_subType"] : "null"); ?>';
-    var nav_source = '<?php echo(isset($_SESSION["nav_source"]) ? $_SESSION["nav_source"] : "null"); ?>';
-    var nav_pageSize = <?php echo(isset($_SESSION["nav_pageSize"]) ? $_SESSION["nav_pageSize"] : "20"); ?>;
-    var nav_pageStart = <?php echo(isset($_SESSION["nav_pageStart"]) ? $_SESSION["nav_pageStart"] : "0"); ?>;
-    var nav_orderBy = '<?php echo(isset($_SESSION["nav_orderBy"]) ? $_SESSION["nav_orderBy"] : "null"); ?>';
-    var nav_baseUrl = "<?php echo(url::base()); ?>";
-
     $(document).ready(function(){
 
         $("div#filter-widget-bottom").hide();
@@ -50,6 +42,8 @@
 
     if($content_exists) {
         foreach($json_tags as $tag) {
+            if($num_tags == intval($json["tag_count"]))
+                continue;
 ?>
         $("a#lnk_<?php echo($num_tags); ?>").click(function() {
             setInterval("Update()", 10000);

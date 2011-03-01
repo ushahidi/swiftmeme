@@ -15,6 +15,9 @@
     $max_day_range = $params["max_day_range"];
     $peak_statistic = $params["peak_statistic"];
 
+    $first_old_month_day = $params["first_old_month_day"];
+    $last_new_month_day = $params["last_new_month_day"];
+
     asort($days_data);
 
     if(!$data_exists || ($min_day_range == $max_day_range)) {

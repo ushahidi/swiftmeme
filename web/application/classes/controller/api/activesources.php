@@ -165,7 +165,9 @@ class Controller_Api_ActiveSources extends Controller
             "data_exists" => $data_exists,
             "min_day_range" => $min_day_range,
             "max_day_range" => $max_day_range,
-            "peak_statistic" => $peak_statistic);
+            "peak_statistic" => $peak_statistic,
+            "first_old_month_day" => $first_old_month_day,
+            "last_new_month_day" => $last_new_month_day);
     }
 
     // Action functions
