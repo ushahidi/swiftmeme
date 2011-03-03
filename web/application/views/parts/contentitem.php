@@ -3,20 +3,6 @@
         <div class="left-column">
             <div class="notch"></div>
             <div class="veracity">
-                <!--
-                <div class="badge">
-                    <?php $content->source->ratings = 3; ?>
-                    <?php if ($content->source->ratings > 2) : ?>
-                        <?php if ($content->source->score > 9) : ?>
-                            <p class="trusted">Trusted</p>
-                        <?php else : ?>
-                            <p class="not_trusted">Not trusted</p>
-                        <?php endif; ?>
-                    <?php else : ?>
-                        <p class="unknown">Unknown</p>
-                    <?php endif; ?>
-                </div>
-                -->
                 <h2 class="<?php echo($content->source->id); ?>"><?php echo($content->source->score == "null")? "-" : $content->source->score;?></h2>
             </div>
             <?php if($enableActions) : ?>
@@ -65,7 +51,7 @@
                         </h2>
                         <?php if(isset($content->text[$i]->text)) : ?>
                             <?php foreach($content->text[$i]->text as $text) : ?>
-					<!-- Hiding Text from View -->
+					            <!-- Hiding Text from View -->
                                 <p style="display:none;"><?php echo($text); ?></p>
                             <?php endforeach; ?>
                         <?php endif; ?>
@@ -76,9 +62,12 @@
                 <?php foreach($content->tags as $type => $tags) : ?>
                     <?php if(is_array($tags) && count($tags) > 0) : ?>
                         <?php if($type != 'where' && count($tags) > 0) : ?>
-                            <ol class="tag-list"><li><strong><?php echo($type); ?>:</strong></li>
+                            <ol class="tag-list">
                                 <?php foreach($tags as $key => $tag) : ?>
-                                    <li><?php echo strtolower($tag); ?></li>
+                                    <li id="<?php echo($content->id); ?>-<?php echo(str_replace(" ", "", strtolower($tag))); ?>">
+                                        <a class="tag-remove" href="JavaScript:void();', '<?php echo($type); ?>', '<?php echo($tag); ?>', '<?php echo($content->id); ?>-<?php echo(str_replace(" ", "", strtolower($tag))); ?>');" title="Remove this tag"><span>&nbsp;</span></a>
+                                        <a class="tag-select" href="JavaScript:void();"><?php echo strtolower($tag); ?></a>
+                                    </li>
                                 <?php endforeach; ?>
                             </ol>
                         <?php endif; ?>

@@ -13,23 +13,20 @@
         $content_exists = true;
         
         $json_tags = $json_content->navigation->Tags->facets;
+        $tag_html = "<div class='filter-tags'><ol class='tag-list'>";
 
         $second_column = false;
 
         foreach($json_tags as $tag) {
             if($num_tags == intval($json["tag_count"]))
                 continue;
-            
-            if(!$second_column) {
-                $first_col_items.= "<div><a id='lnk_".$num_tags."' href='#'>".$tag->name."</a></div>";
-            }
-            else {
-                $second_col_items.= "<div><a id='lnk_".$num_tags."' href='#'>".$tag->name."</a></div>";
-            }
 
-            $second_column = !$second_column;
+            $tag_html.="<li><a class=\"tag-remove\" href=\"#\" title=\"Filter this tag\"><span>&nbsp;</span></a>";
+            $tag_html.="<a class=\"tag-select\" id='lnk_".$num_tags."' href='#'>".$tag->name."</a></li>";
+
             $num_tags ++;
         }
+        $tag_html.="</ol></div>";
     }
 ?>
 
@@ -77,17 +74,12 @@
 
 <div style="text-align:center;font-weight:bold;">FILTER VIEW</div>
 <div class="widget-seperator"></div>
-<div class="widget-box">
+<div class="widget-box-tags">
     <div id="filter-widget-top">
 <?php
     if($content_exists) {
 ?>
-        <div class="filter-view-widget-item-left">
-            <?php echo($first_col_items);?>
-        </div>
-        <div class="filter-view-widget-item-right">
-            <?php echo($second_col_items);?>
-        </div>
+        <?php echo($tag_html);?>
 <?php
     }
     else {
