@@ -7,6 +7,8 @@ class Controller_Api_Maps extends Controller
     public function action_getmap($state, $minVeracity, $maxVeracity, $type, $subType, $source, $pageSize, $pageStart, $orderBy)
     {
         // Content data
+        /*
+        // Activate if you want to map content
         $params = array();
 
         if($state != null && $state != "null")                  $params["state"] = $state;
@@ -20,9 +22,9 @@ class Controller_Api_Maps extends Controller
         if($orderBy != null && $orderBy != "null")              $params["orderBy"] = $orderBy;
 
         $json_encoded_parameters = json_encode($params);
-
-        // You enable this if you want to work with content instead of sources
-        // $content_json = API::content_api()->get_content_list($json_encoded_parameters);
+        $content_json = API::content_api()->get_content_list($json_encoded_parameters);
+         
+         */
 
         // Source data
         $source_json = API::sources_api()->get_all_sources();

@@ -1475,7 +1475,7 @@ button::-moz-focus-inner {
 .widget-box-tags {
     background-color: #FFFFFF !important;
     color: black;
-    padding: 10px !important;
+    padding: 0px !important;
     width: 80% !important;
     position: relative;
     display:block;
