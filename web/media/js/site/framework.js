@@ -37,6 +37,11 @@ function ListController(baseUrl, subject, navContainer) {
      * core api.
      */
     this.results = new Object();
+
+    /**
+     * Contains the value for the height of the div
+     */
+    this.containerHeight = 0;
     
     /**
      * Function for seeting new navigation settings to the List
@@ -78,9 +83,10 @@ function ListController(baseUrl, subject, navContainer) {
                   this.navigationState.orderBy;
 
          //get the current array index
-         this.currentRequests[uri] = $.getJSON(uri, function(data){
+        this.currentRequests[uri] = $.getJSON(uri, function(data){
             listController.results = data;
-            dataFunction();
+             if(dataFunction != null)
+                dataFunction();
 
             if(rerenderNavigation) {
                 listController.RenderNavigation(data.navigation);
@@ -112,16 +118,18 @@ function ListController(baseUrl, subject, navContainer) {
                 var id = data.contentitems[i].id;
                 //Else, make the request to render it
                 listController.currentRequests[id] = $.post(
-                       listController.baseUrl + "parts/content/render",
-                       {content : data.contentitems[i]},
-                       function(contentTemplate) {
-                           $(listController.subject).append(
-                                "<li>" + contentTemplate + "</li>"
-                           );
-                       }
+                    listController.baseUrl + "parts/content/render",
+                    {content : data.contentitems[i]},
+                    function(contentTemplate) {
+                        $(listController.subject).prepend(
+                            "<li>" + contentTemplate + "</li>"
+                        );
+                    }
                 );
+                while($(listController.subject).children().length > listController.navigationState.pageSize)
+                    $(listController.subject).children().lastChild().slideUp();
             }
-         });
+        });
     }
 
 
@@ -218,7 +226,7 @@ function ListController(baseUrl, subject, navContainer) {
         $.getJSON(this.baseUrl + "api/contentcuration/markasaccurate/" + contentId, function(data) {
             listController.UpdateSourceScores(data.sourceId, data.sourceScore);
         });
-        this.RenderList(false);
+        this.RenderList(false, null);
     }
 
     /**
@@ -250,7 +258,7 @@ function ListController(baseUrl, subject, navContainer) {
         $.getJSON(this.baseUrl + "api/contentcuration/markasinaccurate/" + contentId, function(data) {
             listController.UpdateSourceScores(data.sourceId, data.sourceScore);
         });
-        this.RenderList(false);
+        this.RenderList(false, null);
     }
 
     /**
@@ -266,7 +274,7 @@ function ListController(baseUrl, subject, navContainer) {
         $.getJSON(this.baseUrl + "api/contentcuration/markascrosstalk/" + contentId, function(data) {
             listController.UpdateSourceScores(data.sourceId, data.sourceScore);
         });
-        this.RenderList(false);
+        this.RenderList(false, null);
     }
 
     this.DeselectFacet = function(facetgroup) {

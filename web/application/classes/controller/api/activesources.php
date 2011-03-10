@@ -45,6 +45,9 @@ class Controller_Api_ActiveSources extends Controller
         $days_data = array();
         // Does it flow to the next month
         $flows_to_next_month = false;
+        // For inter month navigation
+        $first_old_month_day = 0;
+        $last_new_month_day = 0;
 
         $data_exists = false;
 

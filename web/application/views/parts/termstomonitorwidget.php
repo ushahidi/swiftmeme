@@ -73,7 +73,7 @@
 
                 // Add parameters
 
-                json += '{"SearchPhrase:":"'+termtosubmit+'"},';
+                json += '{"SearchPhrase":"'+termtosubmit+'"},';
 
                 json = json.substring(0, json.length - 1) + '}';
 

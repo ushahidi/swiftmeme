@@ -208,8 +208,11 @@ function DeactivateSource(number, id) {
 
 // CONTENT LIST
 function Update() {
+    /* Code to run the next channel */
     var url = baseurl.replace("/web", "");
     $.post(url + "core/ServiceAPI/ChannelServices/RunNextChannel.php",{ key : "swiftriver_dev" });
+    /* Code to check for new content items */
+    listController.RenderList(false, null);
 }
 
 function ShowAddChannelModal(type, subType) {

@@ -1,3 +1,11 @@
+<?php
+    $source_name = isset($content->source->name) ? $content->source->name : "";
+    $source_type = isset($content->source->type) ? $content->source->type : "";
+    $source_ratings = isset($content->source->ratings)? $content->source->ratings : "";
+    $source_score = isset($content->source->score) ? $content->source->score : "";
+    $content_link = isset($content->link) ? $content->link : "";
+    $source_link = isset($content->source->link) ? $content->source->link : "";
+?>
 <div class="container_content">
     <div class="content-item" id="<?php echo($content->id); ?>">
         <div class="left-column">
@@ -14,7 +22,7 @@
 
 
         <div class="right-column">
-            <p class="source"><a href="javascript:Content('<?php echo($content->source->name); ?>', '<?php echo($content->source->type); ?>', '<?php echo($content->source->ratings); ?>', '<?php echo($content->source->score); ?>', '<?php echo($content->source->link); ?>', '<?php echo($content->link); ?>')" class="<?php echo strtolower($content->source->type); ?>" title="View source details"><!--<?php echo strtolower($content->source->name); ?>--></a><!--source--></p>
+            <p class="source"><a href="javascript:Content('<?php echo($source_name); ?>', '<?php echo($source_type); ?>', '<?php echo($source_ratings); ?>', '<?php echo($source_score); ?>', '<?php echo($source_link); ?>', '<?php echo($content_link); ?>')" class="<?php echo strtolower($source_type); ?>" title="View source details"><!--<?php echo strtolower($source_name); ?>--></a><!--source--></p>
             <div class="meta">
                 <?php foreach($content->tags as $type => $tags) : ?>
                     <?php if(is_array($tags) && count($tags) > 0) : ?>

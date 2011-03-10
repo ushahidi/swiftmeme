@@ -37,6 +37,7 @@ class Controller_Api_ContentSelection extends Controller
         if($pageSize != null && $pageSize != "null")            $params["pageSize"] = (int)$pageSize;
         if($pageStart != null && $pageStart != "null")          $params["pageStart"] = (int)$pageStart;
         if($orderBy != null && $orderBy != "null")              $params["orderBy"] = $orderBy;
+        $params["time"] = time();
 
         // Place tags in the array
 
