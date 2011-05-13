@@ -8,5 +8,6 @@ NOTE: This is a public alpha software release for evaluation and feedback purpos
 SYSTEM REQUIREMENTS
 ===================
 
-* Python 2.7 or higher
-* Supports IE7+, FireFox, Safari
+* [Python 2.7.1+](http://www.python.org/download/releases/2.7.1/)
+* [Flask 0.6.1+](http://flask.pocoo.org/)
+* Supports IE7+, Firefox, Chrome, Safari
