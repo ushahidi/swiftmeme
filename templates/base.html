@@ -13,7 +13,11 @@
    <ul>
     <li>Pricing</li>
    </ul>
-   <p><a href="/login">Login</a></p>
+   {% if user %}
+    <p><a href="/logout">Logout</a></p>
+   {% else %}
+    <p><a href="/login">Login</a></p>
+   {% endif %}
   </div>
   <div id="content">
    {% block content %}
