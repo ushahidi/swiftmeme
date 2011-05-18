@@ -3,27 +3,21 @@ from flask import Flask, redirect, render_template, session
 app = Flask(__name__)
 
 def show(template):
-    vars = {}
-    if "user" in session: vars["user"] = session["user"]
-    return render_template(template, **vars)
+    return render_template(template, session=session)
 
 def loggedin(f):
-    def new():
-        return f() if "user" in session else redirect("/login")
-    return new
+    return lambda: f() if "user" in session else redirect("/login")
 
 def loggedout(f):
-    def new():
-        return redirect("/dashboard") if "user" in session else f()
-    return new
+    return lambda: redirect("/dashboard") if "user" in session else f()
 
-@app.route("/")
 @loggedout
+@app.route("/")
 def index():
     return show("index.html")
 
-@app.route("/dashboard")
 @loggedin
+@app.route("/dashboard")
 def dashboard():
     return show("dashboard.html")
 
