@@ -1,4 +1,4 @@
-from flask import Flask, redirect, session
+from flask import Flask, redirect, request, session
 from helpers import loggedin, loggedout, show
 
 app = Flask(__name__)
@@ -15,8 +15,11 @@ def dashboard():
 
 @app.route("/login")
 def login():
-    if not "user" in session: session["user"] = 1
-    return redirect("/dashboard")
+    if request.method == "POST":
+        if not "user" in session: session["user"] = 1
+        return redirect("/dashboard")
+    else:
+        return show("login.html")
 
 @app.route("/logout")
 def logout():
