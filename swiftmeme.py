@@ -1,15 +1,7 @@
-from flask import Flask, redirect, render_template, session
+from flask import Flask, redirect, session
+from helpers import loggedin, loggedout, show
 
 app = Flask(__name__)
-
-def show(template):
-    return render_template(template, session=session)
-
-def loggedin(f):
-    return lambda: f() if "user" in session else redirect("/login")
-
-def loggedout(f):
-    return lambda: redirect("/dashboard") if "user" in session else f()
 
 @loggedout
 @app.route("/")
