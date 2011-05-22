@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
  <h2>Login</h2>
- {% if error %}<p class="error">The login details you entered were incorrect. Please try again.</p>{% endif %}
+ {% if error %}<p class="error">{{ error|escape }}</p>{% endif %}
  <form method="post">
   <p><label for="riverid">RiverID:</label> <input id="riverid" name="riverid" value="{{ riverid|escape }}"></p>
   <p><label for="password">Password:</label> <input id="password" name="password" type="password"></p>

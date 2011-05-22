@@ -1,6 +1,7 @@
 from flask import Flask, redirect, request, session
 from helpers import loggedin, loggedout, show
 from riverid import RiverID
+from string import join
 
 app = Flask(__name__)
 riverid = RiverID("http://50.57.68.66/riverid/1/")
@@ -15,19 +16,17 @@ def index():
 def dashboard():
     return show("dashboard.html")
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        if "user" in session:
+        try:
+            riverid.authenticate(request.form["riverid"], request.form["password"])
+            session["user"] = 1
             return redirect("/dashboard")
-        else:
-            if riverid.authenticate(request.form["riverid"], requst.form["password"]):
-                session["user"] = 1
-                return redirect("/dashboard")
-            else:
-                show("login.html", error=True, riverid=request.form["riverid"])
+        except Exception as e:
+            return show("login.html", error=join(e.args, " "), riverid=request.form["riverid"])
     else:
-        return show("login.html")
+        return redirect("/dashboard") if "user" in session else show("login.html")
 
 @app.route("/logout")
 def logout():
