@@ -21,28 +21,28 @@ def login():
     if request.method == "POST":
         try:
             riverid.authenticate(request.form["riverid"], request.form["password"])
-            session["user"] = 1
+            session["riverid"] = request.form["riverid"]
             return redirect("/dashboard")
         except Exception as e:
             return show("login.html", error=join(e.args, " "), riverid=request.form["riverid"])
     else:
-        return redirect("/dashboard") if "user" in session else show("login.html")
+        return redirect("/dashboard") if "riverid" in session else show("login.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         try:
             riverid.register(request.form["riverid"], request.form["password"], request.form["emailaddress"])
-            session["user"] = request.form["riverid"]
+            session["riverid"] = request.form["riverid"]
             return redirect("/dashboard")
         except Exception as e:
             return show("register.html", error=join(e.args, " "), riverid=request.form["riverid"], emailaddress=request.form["emailaddress"])
     else:
-        return redirect("/dashboard") if "user" in session else show("register.html")
+        return redirect("/dashboard") if "riverid" in session else show("register.html")
 
 @app.route("/logout")
 def logout():
-    if "user" in session: del session["user"]
+    if "riverid" in session: del session["riverid"]
     return redirect("/")
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ def show(template, **vars):
     return render_template(template, session=session, **vars)
 
 def loggedin(f):
-    return lambda: f() if "user" in session else redirect("/login")
+    return lambda: f() if "riverid" in session else redirect("/login")
 
 def loggedout(f):
-    return lambda: redirect("/dashboard") if "user" in session else f()
+    return lambda: redirect("/dashboard") if "riverid" in session else f()
