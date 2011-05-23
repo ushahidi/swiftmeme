@@ -2,7 +2,7 @@
 {% block content %}
  <h2>Register</h2>
  {% if error %}<p class="error">{{ error|escape }}</p>{% endif %}
- <form method="post">
+ <form method="post" action="/register">
   <p><label for="riverid">RiverID:</label> <input id="riverid" name="riverid" value="{{ riverid|escape }}"></p>
   <p><label for="emailaddress">Email:</label> <input id="emailaddress" name="emailaddress" value="{{ emailaddress|escape }}"></p>
   <p><label for="password">Password:</label> <input id="password" name="password" type="password"></p>
