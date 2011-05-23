@@ -1,10 +1,4 @@
 {% extends "base.html" %}
 {% block content %}
- <h2>Login</h2>
- {% if error %}<p class="error">{{ error|escape }}</p>{% endif %}
- <form method="post" action="/login">
-  <p><label for="riverid">RiverID:</label> <input id="riverid" name="riverid" value="{{ riverid|escape }}"></p>
-  <p><label for="password">Password:</label> <input id="password" name="password" type="password"></p>
-  <p><button>Login</button></p>
- </form>
+ {% include "loginform.html" %}
 {% endblock %}
