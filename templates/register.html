@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+ <h2>Register</h2>
+ {% if error %}<p class="error">{{ error|escape }}</p>{% endif %}
+ <form method="post">
+  <p><label for="riverid">RiverID:</label> <input id="riverid" name="riverid" value="{{ riverid|escape }}"></p>
+  <p><label for="email">Email:</label> <input id="email" name="email" value="{{ email|escape }}"></p>
+  <p><label for="password">Password:</label> <input id="password" name="password" type="password"></p>
+  <p><button>Register</button></p>
+ </form>
+{% endblock %}

@@ -28,6 +28,18 @@ def login():
     else:
         return redirect("/dashboard") if "user" in session else show("login.html")
 
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        try:
+            riverid.register(request.form["riverid"], request.form["password"], request.form["email"])
+            session["user"] = request.form["riverid"]
+            return redirect("/dashboard")
+        except Exception as e:
+            return show("register.html", error=join(e.args, " "), riverid=request.form["riverid"], email=request.form["email"])
+    else:
+        return redirect("/dashboard") if "user" in session else show("register.html")
+
 @app.route("/logout")
 def logout():
     if "user" in session: del session["user"]
