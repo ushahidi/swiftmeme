@@ -1,8 +1,8 @@
 <h2>Register</h2>
 {% if error %}<p class="error">{{ error|escape }}</p>{% endif %}
 <form method="post" action="/register">
- <p><label for="riverid">RiverID:</label> <input id="riverid" name="riverid" value="{{ riverid|escape }}"></p>
- <p><label for="emailaddress">Email:</label> <input id="emailaddress" name="emailaddress" value="{{ emailaddress|escape }}"></p>
- <p><label for="password">Password:</label> <input id="password" name="password" type="password"></p>
+ <p><label for="registerriverid">RiverID:</label> <input id="registerriverid" name="riverid" value="{{ riverid|escape }}"></p>
+ <p><label for="registeremailaddress">Email:</label> <input id="registeremailaddress" name="emailaddress" value="{{ emailaddress|escape }}"></p>
+ <p><label for="registerpassword">Password:</label> <input id="registerpassword" name="password" type="password"></p>
  <p><button>Register</button></p>
 </form>
