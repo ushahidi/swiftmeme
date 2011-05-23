@@ -29,8 +29,8 @@ class RiverID(object):
             raise Exception(*result["response"]["errors"])
         return result["status"] == "success"
 
-    def register(self, riverid, password, email):
-        params = {"riverid": riverid, "password": password, "email": email}
+    def register(self, riverid, password, emailaddress):
+        params = {"riverid": riverid, "password": password, "emailaddress": emailaddress}
         result = loads(urlopen(self.base + "register", urlencode(params)).read())
         if result["status"] == "failure":
             raise Exception(*result["response"]["errors"])
