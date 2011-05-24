@@ -59,10 +59,14 @@ def register():
 
 @app.route("/logout")
 def logout():
-    if "riverid" in session: del session["riverid"]
+    if "riverid" in session:
+        del session["riverid"]
     return redirect("/")
 
-if __name__ == "__main__":
+def main():
     app.debug = DEBUG_MODE
     app.secret_key = SECRET_KEY
     app.run(host=HOST_IP)
+
+if __name__ == "__main__":
+    main()
