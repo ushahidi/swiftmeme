@@ -14,8 +14,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from json import loads
-from urllib import urlencode
+from json    import loads
+from urllib  import urlencode
 from urllib2 import urlopen
 
 class RiverID(object):
