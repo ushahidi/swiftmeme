@@ -14,13 +14,14 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from config import *
 from flask import Flask, redirect, request, session
 from helpers import loggedin, loggedout, show
 from riverid import RiverID
 from string import join
 
 app = Flask(__name__)
-riverid = RiverID("http://50.57.68.66/riverid/1/")
+riverid = RiverID(RIVERID_BASE)
 
 @loggedout
 @app.route("/")
@@ -63,5 +64,5 @@ def logout():
 
 if __name__ == "__main__":
     app.debug = True
-    app.secret_key = "abc123"
+    app.secret_key = SECRET_KEY
     app.run(host="0.0.0.0")
