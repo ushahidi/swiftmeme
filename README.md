@@ -4,10 +4,10 @@
 
 SwiftMeme is a source discovery and keyword monitoring tool for tracking memes online.
 
-## Components
+## Requirements
 
-* [API Web Service](https://github.com/ushahidi/SwiftMeme/tree/master/api)
-* [User-Facing Application](https://github.com/ushahidi/SwiftMeme/tree/master/ui)
+* [Python 2.7.1+](http://www.python.org/download/releases/2.7.1/)
+* [Flask 0.6.1+](http://flask.pocoo.org/)
 
 ## License
 
