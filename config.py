@@ -20,8 +20,8 @@ DEBUG_MODE = True
 # IP address to bind to
 HOST_IP = "0.0.0.0"
 
-# The base URL of the RiverID API
-RIVERID_BASE = "http://50.57.68.66/riverid/1/"
+# The base URL of the SwiftRiver Gateway
+SWIFT_GATEWAY_BASE = "http://api.swiftly.com/"
 
 # The secret key for encrypting sessions, etc
 SECRET_KEY = "abc123"
