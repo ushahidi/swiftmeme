@@ -22,7 +22,7 @@ class Gateway(object):
         self.key = key
         self.secret = secret
 
-    def request(path, method="POST", parameters={}):
+    def request(self, path, method, parameters):
         url = self.base + path
 
         oauth_parameters = parameters.copy()
@@ -38,18 +38,15 @@ class Gateway(object):
         http_request = urllib2.Request(url, headers=oauth_request.to_header(), data=http_data)
         http_response = urllib2.urlopen(http_request).read()
 
-        return json.loads(http_response)
+        result = json.loads(http_response)
 
-    def authenticate(self, riverid, password):
-        params = {"riverid": riverid, "password": password}
-        result = loads(urlopen(self.base + "authenticate", urlencode(params)).read())
         if result["status"] == "failure":
             raise Exception(*result["response"]["errors"])
-        return result["status"] == "success"
 
-    def register(self, riverid, password, emailaddress):
-        params = {"riverid": riverid, "password": password, "emailaddress": emailaddress}
-        result = loads(urlopen(self.base + "register", urlencode(params)).read())
-        if result["status"] == "failure":
-            raise Exception(*result["response"]["errors"])
-        return result["status"] == "success"
+        return result
+
+    def user_account_activation(self, riverid, password):
+        return self.request("swiftmeme/useraccountactivation", "GET", {"riverid": riverid, "password": password})
+
+    def user_account_registration(self, riverid, password, emailaddress):
+        return self.request("swiftmeme/useraccountregistration", "GET", {"riverid": riverid, "password": password, "emailaddress": emailaddress})
