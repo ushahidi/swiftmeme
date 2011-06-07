@@ -14,22 +14,31 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from json    import loads
-from urllib  import urlencode
-from urllib2 import urlopen
+import json, oauth2, urllib, urllib2
 
-def build_request(key, secret, url, method='POST', values={}):
-    params = {"oauth_timestamp": int(time.time()), "oauth_nonce": None, "oauth_signature_method": "HMAC-SHA1"}
-    params.update(values)
-    consumer = oauth2.Consumer(key=key,secret=secret)
-    req = oauth2.Request(method=method, url=url, parameters=params)
-    signature_method = oauth2.SignatureMethod_HMAC_SHA1()
-    req.sign_request(signature_method, consumer, None)
-    return req
-
-class RiverID(object):
-    def __init__(self, base):
+class Gateway(object):
+    def __init__(self, base, key, secret):
         self.base = base
+        self.key = key
+        self.secret = secret
+
+    def request(path, method="POST", parameters={}):
+        url = self.base + path
+
+        oauth_parameters = parameters.copy()
+        oauth_parameters["oauth_timestamp"] = int(time.time())
+        oauth_parameters["oauth_nonce"] = None
+        oauth_parameters["oauth_signature_method"] = "HMAC-SHA1"
+        oauth_consumer = oauth2.Consumer(key=self.key, secret=self.secret)
+        oauth_request = oauth2.Request(method=method, url=url, parameters=oauth_parameters)
+        oauth_signature_method = oauth2.SignatureMethod_HMAC_SHA1()
+        oauth_request.sign_request(oauth_signature_method, oauth_consumer, None)
+
+        http_data = urllib.urlencode(parameters)
+        http_request = urllib2.Request(url, headers=oauth_request.to_header(), data=http_data)
+        http_response = urllib2.urlopen(http_request).read()
+
+        return json.loads(http_response)
 
     def authenticate(self, riverid, password):
         params = {"riverid": riverid, "password": password}
