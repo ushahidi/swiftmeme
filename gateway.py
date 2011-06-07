@@ -50,3 +50,9 @@ class Gateway(object):
 
     def user_account_registration(self, riverid, password, emailaddress):
         return self.request("swiftmeme/useraccountregistration", "GET", {"riverid": riverid, "password": password, "emailaddress": emailaddress})
+
+    def get_meme_overview(self, memeid):
+        return self.request("swiftmeme/getmemeoverview", "GET", {"memeid": memeid})
+
+    def configure_meme(self, memeid, memename, searchkeywords):
+        return self.request("swiftmeme/configurememe", "GET", {"memeid": memeid, "memename": memename, "searchkeywords": searchkeywords})
