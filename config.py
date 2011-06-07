@@ -20,8 +20,10 @@ DEBUG_MODE = True
 # IP address to bind to
 HOST_IP = "0.0.0.0"
 
-# The base URL of the SwiftRiver Gateway
-SWIFT_GATEWAY_BASE = "http://api.swiftly.com/"
+# SwiftRiver Gateway
+GATEWAY_BASE = ""
+GATEWAY_KEY = ""
+GATEWAY_SECRET = ""
 
 # The secret key for encrypting sessions, etc
 SECRET_KEY = "abc123"
