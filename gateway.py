@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import json, oauth2, urllib, urllib2
+import json, oauth2, time, urllib, urllib2
 
 class Gateway(object):
     def __init__(self, base, key, secret):
