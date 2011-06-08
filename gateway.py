@@ -22,14 +22,14 @@ class Gateway(object):
         self.key = key
         self.secret = secret
 
-    def request(self, path, method, parameters):
+    def request(self, key, secret, path, parameters={}, method="POST"):
         url = self.base + path
 
         oauth_parameters = parameters.copy()
         oauth_parameters["oauth_timestamp"] = int(time.time())
         oauth_parameters["oauth_nonce"] = None
         oauth_parameters["oauth_signature_method"] = "HMAC-SHA1"
-        oauth_consumer = oauth2.Consumer(key=self.key, secret=self.secret)
+        oauth_consumer = oauth2.Consumer(key=key, secret=secret)
         oauth_request = oauth2.Request(method=method, url=url, parameters=oauth_parameters)
         oauth_signature_method = oauth2.SignatureMethod_HMAC_SHA1()
         oauth_request.sign_request(oauth_signature_method, oauth_consumer, None)
@@ -45,14 +45,11 @@ class Gateway(object):
 
         return result
 
-    def user_account_activation(self, riverid, password):
-        return self.request("swiftmeme/useraccountactivation", "GET", {"riverid": riverid, "password": password})
+    def authenticate(self, riverid, password):
+        return self.request(self.key, self.secret, "swiftmeme/1/authenticate", {"riverid": riverid, "password": password})
 
-    def user_account_registration(self, riverid, password, emailaddress):
-        return self.request("swiftmeme/useraccountregistration", "GET", {"riverid": riverid, "password": password, "emailaddress": emailaddress})
+    def register(self, riverid, password, emailaddress):
+        return self.request(self.key, self.secret, "swiftmeme/1/register", {"riverid": riverid, "password": password, "emailaddress": emailaddress})
 
-    def get_meme_overview(self, memeid):
-        return self.request("swiftmeme/getmemeoverview", "GET", {"memeid": memeid})
-
-    def configure_meme(self, memeid, memename, searchkeywords):
-        return self.request("swiftmeme/configurememe", "GET", {"memeid": memeid, "memename": memename, "searchkeywords": searchkeywords})
+    def get_meme_overview(self, id, secret):
+        return self.request(id, secret, "swiftmeme/1/getmemeoverview")
