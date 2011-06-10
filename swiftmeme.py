@@ -17,11 +17,11 @@
 from config  import *
 from flask   import Flask, redirect, request, session
 from helpers import loggedin, loggedout, show
-from riverid import RiverID
+from gateway import Gateway
 from string  import join
 
 app = Flask(__name__)
-riverid = RiverID(RIVERID_BASE)
+gateway = Gateway(GATEWAY_BASE, GATEWAY_KEY, GATEWAY_SECRET)
 
 @loggedout
 @app.route("/")
@@ -37,7 +37,7 @@ def dashboard():
 def login():
     if request.method == "POST":
         try:
-            riverid.authenticate(request.form["riverid"], request.form["password"])
+            gateway.authenticate(request.form["riverid"], request.form["password"])
             session["riverid"] = request.form["riverid"]
             return redirect("/dashboard")
         except Exception as e:
@@ -49,7 +49,7 @@ def login():
 def register():
     if request.method == "POST":
         try:
-            riverid.register(request.form["riverid"], request.form["password"], request.form["emailaddress"])
+            gateway.register(request.form["riverid"], request.form["password"], request.form["emailaddress"])
             session["riverid"] = request.form["riverid"]
             return redirect("/dashboard")
         except Exception as e:
