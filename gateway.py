@@ -53,3 +53,5 @@ class Gateway(object):
 
     def get_meme_overview(self, id, secret):
         return self.request(id, secret, "swiftmeme/1/getmemeoverview")
+    def get_meme_analytics(self, id, secret):
+        return self.request(id, secret, "swiftmeme/1/getmemeanalytics")
