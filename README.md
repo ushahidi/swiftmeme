@@ -11,7 +11,7 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 
 ## License
 
-The source code is released under the terms of the [GNU Lesser General Public License](http://www.gnu.org/copyleft/lesser.html).
+The source code is released under the terms of the [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
 
 ## More Info
 
