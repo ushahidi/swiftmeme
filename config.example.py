@@ -24,6 +24,3 @@ HOST_IP = "0.0.0.0"
 GATEWAY_BASE = ""
 GATEWAY_KEY = ""
 GATEWAY_SECRET = ""
-
-# The secret key for encrypting sessions, etc
-SECRET_KEY = "abc123"

@@ -43,7 +43,6 @@ def getmemeoverview():
 
 def main():
     app.debug = DEBUG_MODE
-    app.secret_key = SECRET_KEY
     app.run(host=HOST_IP)
 
 if __name__ == "__main__":
