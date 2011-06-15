@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from config  import *
-from flask   import Flask, jsonify, request
+from flask   import Flask, request
 from gateway import Gateway
 
 app = Flask(__name__)
@@ -23,7 +23,7 @@ gateway = Gateway(GATEWAY_BASE, GATEWAY_KEY, GATEWAY_SECRET)
 
 @app.route("/api/<method>", methods=["POST"])
 def login(method):
-    return jsonify(**getattr(gateway, method)(**request.form))
+    return getattr(gateway, method)(**request.form)
 
 def main():
     app.debug = DEBUG_MODE
