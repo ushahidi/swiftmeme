@@ -38,7 +38,7 @@ class Gateway(object):
         http_request = urllib2.Request(url, headers=oauth_request.to_header(), data=http_data)
         http_response = urllib2.urlopen(http_request).read()
 
-        return result
+        return http_response
 
     def authenticate(self, riverid, password):
         return self.request(self.key, self.secret, "swiftmeme/1/authenticate", {"riverid": riverid, "password": password})
