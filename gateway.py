@@ -51,11 +51,11 @@ class Gateway(object):
     def register(self, riverid, password, emailaddress):
         return self.request(self.key, self.secret, "swiftmeme/1/register", {"riverid": riverid, "password": password, "emailaddress": emailaddress})
 
-    def get_meme_overview(self, id, secret):
+    def getmemeoverview(self, id, secret):
         return self.request(id, secret, "swiftmeme/1/getmemeoverview")
 
-    def get_meme_analytics(self, id, secret):
+    def getmemeanalytics(self, id, secret):
         return self.request(id, secret, "swiftmeme/1/getmemeanalytics")
 
-    def get_meme_content(self, id, secret):
+    def getmemecontent(self, id, secret):
         return self.request(id, secret, "swiftmeme/1/getmemecontent")
