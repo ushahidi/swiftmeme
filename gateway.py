@@ -22,7 +22,7 @@ class Gateway(object):
         self.key = key
         self.secret = secret
 
-    def request(self, key, secret, path, parameters={}, method="POST"):
+    def __request(self, key, secret, path, parameters={}, method="POST"):
         url = self.base + path
 
         oauth_parameters = parameters.copy()
@@ -41,16 +41,16 @@ class Gateway(object):
         return http_response
 
     def authenticate(self, riverid, password):
-        return self.request(self.key, self.secret, "swiftmeme/1/authenticate", {"riverid": riverid, "password": password})
-
-    def register(self, riverid, password, emailaddress):
-        return self.request(self.key, self.secret, "swiftmeme/1/register", {"riverid": riverid, "password": password, "emailaddress": emailaddress})
-
-    def getmemeoverview(self, id, secret):
-        return self.request(id, secret, "swiftmeme/1/getmemeoverview")
+        return self.__request(self.key, self.secret, "swiftmeme/1/authenticate", {"riverid": riverid, "password": password})
 
     def getmemeanalytics(self, id, secret):
-        return self.request(id, secret, "swiftmeme/1/getmemeanalytics")
+        return self.__request(id, secret, "swiftmeme/1/getmemeanalytics")
 
     def getmemecontent(self, id, secret):
-        return self.request(id, secret, "swiftmeme/1/getmemecontent")
+        return self.__request(id, secret, "swiftmeme/1/getmemecontent")
+
+    def getmemeoverview(self, id, secret):
+        return self.__request(id, secret, "swiftmeme/1/getmemeoverview")
+
+    def register(self, riverid, password, emailaddress):
+        return self.__request(self.key, self.secret, "swiftmeme/1/register", {"riverid": riverid, "password": password, "emailaddress": emailaddress})

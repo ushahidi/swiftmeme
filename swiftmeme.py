@@ -22,7 +22,7 @@ app = Flask(__name__)
 gateway = Gateway(GATEWAY_BASE, GATEWAY_KEY, GATEWAY_SECRET)
 
 @app.route("/api/<method>", methods=["POST"])
-def login(method):
+def api(method):
     result = getattr(gateway, method)(**request.json)
     response = make_response(result)
     response.headers["Content-Type"] = "application/json; charset=UTF-8"
