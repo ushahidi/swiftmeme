@@ -18,7 +18,7 @@ import config, flask, gateway, memcache
 
 app = flask.Flask(__name__)
 gw = gateway.Gateway(config.GATEWAY_BASE, config.GATEWAY_KEY, config.GATEWAY_SECRET)
-memcache = memcache.Client(config.MEMCACHE_HOSTS)
+memcache = memcache.Client(config.MEMCACHE_HOSTS, config.MEMCACHE_EXPIRE)
 
 @app.route("/api/<method>", methods=["POST"])
 def api(method):

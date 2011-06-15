@@ -17,11 +17,12 @@
 import hashlib, json, oauth2, time, urllib, urllib2
 
 class Gateway(object):
-    def __init__(self, base, key, secret, memcache):
+    def __init__(self, base, key, secret, memcache, expire):
         self.base = base
         self.key = key
         self.secret = secret
         self.memcache = memcache
+        self.expire = expire
 
     def __request(self, key, secret, path, parameters={}, method="POST", cache=False):
         if cache:
@@ -49,7 +50,7 @@ class Gateway(object):
             value = http_response.read()
 
             if cache:
-                self.memcache.set(key, value)
+                self.memcache.set(key, value, self.expire)
 
         return http_response
 
