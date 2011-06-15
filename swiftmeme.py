@@ -23,7 +23,7 @@ gateway = Gateway(GATEWAY_BASE, GATEWAY_KEY, GATEWAY_SECRET)
 
 @app.route("/api/<method>", methods=["POST"])
 def login(method):
-    return getattr(gateway, method)(**request.form)
+    return getattr(gateway, method)(**request.json)
 
 def main():
     app.debug = DEBUG_MODE
