@@ -14,23 +14,21 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from config  import *
-from flask   import Flask, make_response, request
-from gateway import Gateway
+import config, flask, gateway
 
-app = Flask(__name__)
-gateway = Gateway(GATEWAY_BASE, GATEWAY_KEY, GATEWAY_SECRET)
+app = flask.Flask(__name__)
+gw = gateway.Gateway(config.GATEWAY_BASE, config.GATEWAY_KEY, config.GATEWAY_SECRET)
 
 @app.route("/api/<method>", methods=["POST"])
 def api(method):
-    result = getattr(gateway, method)(**request.json)
-    response = make_response(result)
+    result = getattr(gw, method)(**flask.request.json)
+    response = flask.make_response(result)
     response.headers["Content-Type"] = "application/json; charset=UTF-8"
     return response
 
 def main():
-    app.debug = DEBUG_MODE
-    app.run(host=HOST_IP)
+    app.debug = config.DEBUG_MODE
+    app.run(host=config.HOST_IP)
 
 if __name__ == "__main__":
     main()
