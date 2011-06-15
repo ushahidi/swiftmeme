@@ -26,8 +26,8 @@ class Gateway(object):
 
     def __request(self, key, secret, path, parameters={}, method="POST", cache=False):
         if cache:
-            key = hashlib.sha512(json.dumps((key, secret, path, parameters, method))).hexdigest()
-            value = self.memcache.get(key)
+            hash = hashlib.sha512(json.dumps((key, secret, path, parameters, method))).hexdigest()
+            value = self.memcache.get(hash)
         else:
             value = False
 
@@ -50,7 +50,7 @@ class Gateway(object):
             value = http_response.read()
 
             if cache:
-                self.memcache.set(key, value, self.expire)
+                self.memcache.set(hash, value, self.expire)
 
         return value
 
