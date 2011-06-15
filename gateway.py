@@ -52,7 +52,7 @@ class Gateway(object):
             if cache:
                 self.memcache.set(key, value, self.expire)
 
-        return http_response
+        return value
 
     def authenticate(self, riverid, password):
         return self.__request(self.key, self.secret, "swiftmeme/1/authenticate", {"riverid": riverid, "password": password})
