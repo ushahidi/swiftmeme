@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import json, oauth2, time, urllib, urllib2
+import oauth2, time, urllib, urllib2
 
 class Gateway(object):
     def __init__(self, base, key, secret):
@@ -37,11 +37,6 @@ class Gateway(object):
         http_data = urllib.urlencode(parameters)
         http_request = urllib2.Request(url, headers=oauth_request.to_header(), data=http_data)
         http_response = urllib2.urlopen(http_request).read()
-
-        result = json.loads(http_response)
-
-        if result["status"] == "failure":
-            raise Exception(*result["response"]["errors"])
 
         return result
 
