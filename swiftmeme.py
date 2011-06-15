@@ -21,25 +21,9 @@ from gateway import Gateway
 app = Flask(__name__)
 gateway = Gateway(GATEWAY_BASE, GATEWAY_KEY, GATEWAY_SECRET)
 
-@app.route("/api/authenticate", methods=["POST"])
-def login():
-    return jsonify(**gateway.authenticate(**request.form))
-
-@app.route("/api/register", methods=["POST"])
-def register():
-    return jsonify(**gateway.register(**request.form))
-
-@app.route("/api/getmemeanalytics", methods=["POST"])
-def getmemeanalytics():
-    return jsonify(**gateway.getmemeanalytics(**request.form))
-
-@app.route("/api/getmemecontent", methods=["POST"])
-def getmemecontent():
-    return jsonify(**gateway.getmemecontent(**request.form))
-
-@app.route("/api/getmemeoverview", methods=["POST"])
-def getmemeoverview():
-    return jsonify(**gateway.getmemeoverview(**request.form))
+@app.route("/api/<method>", methods=["POST"])
+def login(method):
+    return jsonify(**getattr(gateway, method)(**request.form))
 
 def main():
     app.debug = DEBUG_MODE
