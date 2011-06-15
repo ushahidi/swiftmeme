@@ -15,53 +15,36 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from config  import *
-from flask   import Flask, redirect, request, session
-from helpers import loggedin, loggedout, show
+from flask   import Flask, request, response
 from gateway import Gateway
-from string  import join
 
 app = Flask(__name__)
 gateway = Gateway(GATEWAY_BASE, GATEWAY_KEY, GATEWAY_SECRET)
 
-@loggedout
-@app.route("/")
-def index():
-    return show("index.html")
+def response(data):
+    r = make_response(json.dumps(data))
+    r.headers["Content-Type"] = "application/json; charset=UTF-8"
+    return r
 
-@loggedin
-@app.route("/dashboard")
-def dashboard():
-    return show("dashboard.html")
-
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/api/authenticate", methods=["POST"])
 def login():
-    if request.method == "POST":
-        try:
-            gateway.authenticate(request.form["riverid"], request.form["password"])
-            session["riverid"] = request.form["riverid"]
-            return redirect("/dashboard")
-        except Exception as e:
-            return show("login.html", error=join(e.args, " "), riverid=request.form["riverid"])
-    else:
-        return redirect("/dashboard") if "riverid" in session else show("login.html")
+    return response(gateway.authenticate(**request.form))
 
-@app.route("/register", methods=["GET", "POST"])
+@app.route("/api/register", methods=["POST"])
 def register():
-    if request.method == "POST":
-        try:
-            gateway.register(request.form["riverid"], request.form["password"], request.form["emailaddress"])
-            session["riverid"] = request.form["riverid"]
-            return redirect("/dashboard")
-        except Exception as e:
-            return show("register.html", error=join(e.args, " "), riverid=request.form["riverid"], emailaddress=request.form["emailaddress"])
-    else:
-        return redirect("/dashboard") if "riverid" in session else show("register.html")
+    return response(gateway.register(**request.form))
 
-@app.route("/logout")
-def logout():
-    if "riverid" in session:
-        del session["riverid"]
-    return redirect("/")
+@app.route("/api/getmemeanalytics", methods=["POST"])
+def getmemeanalytics():
+    return response(gateway.getmemeanalytics(**request.form))
+
+@app.route("/api/getmemecontent", methods=["POST"])
+def getmemecontent():
+    return response(gateway.getmemecontent(**request.form))
+
+@app.route("/api/getmemeoverview", methods=["POST"])
+def getmemeoverview():
+    return response(gateway.getmemeoverview(**request.form))
 
 def main():
     app.debug = DEBUG_MODE
