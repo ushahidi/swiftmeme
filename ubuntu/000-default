@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+    Alias /static/ /var/www/swiftmeme/static/
+    AliasMatch ^/$ /var/www/swiftmeme/static/index.html
+    WSGIDaemonProcess swiftmeme user=swiftmeme group=swiftmeme threads=5
+    WSGIScriptAlias / /var/www/swiftmeme/api/swiftmeme.wsgi
+</VirtualHost>
