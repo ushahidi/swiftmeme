@@ -17,7 +17,9 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 
 ## External Dependencies
 
-* [SwiftRiver Gateway](https://github.com/ushahidi/SwiftGateway)
+* [SwiftRiver Gateway](https://github.com/ushahidi/SwiftGateway) (Directly)
+* [SwiftRiver Core](https://github.com/ushahidi/Swiftriver) (Indirectly)
+* [RiverID](https://github.com/ushahidi/RiverID) (Indirectly)
 
 ## License
 
