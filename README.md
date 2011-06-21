@@ -4,6 +4,10 @@
 
 SwiftMeme is a source discovery and keyword monitoring tool for tracking memes online.
 
+## Architecture
+
+![Architectural Diagram](https://github.com/ushahidi/SwiftMeme/raw/master/doc/architecture.png)
+
 ## Requirements
 
 * [Apache HTTP Server](http://httpd.apache.org/)
