@@ -16,6 +16,7 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 * [mod_wsgi](http://code.google.com/p/modwsgi/)
 * [Python 2.x](http://python.org/)
 * [python-memcached](http://www.tummy.com/Community/software/python-memcached/)
+* [python-oauth2](https://github.com/simplegeo/python-oauth2)
 
 ## External Dependencies
 
