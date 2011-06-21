@@ -8,14 +8,14 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 
 ![Architectural Diagram](https://github.com/ushahidi/SwiftMeme/raw/master/doc/architecture.png)
 
-## Requirements
+## Internal Dependencies
 
 * [Apache HTTP Server](http://httpd.apache.org/)
 * [Flask](http://flask.pocoo.org/)
 * [mod_wsgi](http://code.google.com/p/modwsgi/)
 * [Python 2.x](http://www.python.org/)
 
-## Dependencies
+## External Dependencies
 
 * [SwiftRiver Gateway](https://github.com/ushahidi/SwiftGateway)
 
