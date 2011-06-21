@@ -6,8 +6,10 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 
 ## Requirements
 
-* [Python 2.7.1+](http://www.python.org/download/releases/2.7.1/)
-* [Flask 0.6.1+](http://flask.pocoo.org/)
+* [Apache HTTP Server](http://httpd.apache.org/)
+* [Flask](http://flask.pocoo.org/)
+* [mod_wsgi](http://code.google.com/p/modwsgi/)
+* [Python 2.x](http://www.python.org/)
 
 ## License
 
