@@ -26,10 +26,10 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 
 ## Rackspace Deployment
 
-1. Create a server of type: Ubuntu 10.10 (Maverick Meerkat)"
-2. SSH into the new server as root
-3. Execute `curl https://raw.github.com/ushahidi/SwiftMeme/master/deploy/ubuntu/install.sh | bash`
-4. Edit `/var/www/swiftmeme/api/config.py` with `vim` or `nano` - configure the gateway, the rest should be fine as-is
+1. Create a server of type: Ubuntu 10.10 (Maverick Meerkat)
+2. SSH into the new server as root.
+3. Execute: `curl https://raw.github.com/ushahidi/SwiftMeme/master/deploy/ubuntu/install.sh | bash`
+4. Edit `/var/www/swiftmeme/api/config.py` with `vim` or `nano` - configure the gateway, the rest should be fine as-is.
 
 ## License
 
