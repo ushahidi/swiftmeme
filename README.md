@@ -11,6 +11,10 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 * [mod_wsgi](http://code.google.com/p/modwsgi/)
 * [Python 2.x](http://www.python.org/)
 
+## Dependencies
+
+* [SwiftRiver Gateway](https://github.com/ushahidi/SwiftGateway)
+
 ## License
 
 The source code is released under the terms of the [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
