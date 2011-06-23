@@ -35,10 +35,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   <!-- page wrap starts -->
   <div class="pageWrap">
     <!-- header starts -->
-    <div class="headerWrap"> <a href="./index.html" class="mainLogo"><img src="/static/images/logo.png" alt="" /></a>
+    <div class="headerWrap"> <a href="/" class="mainLogo"><img src="/static/images/logo.png" alt="" /></a>
       <ul class="mainMenu">
       <li>
-      
+
 <form action="" >
 <input type="text" class="searchbox" name="s" value="Search..." />
 <input type="image" src="/static/images/search.png" class="searchbox_submit" value="" />
@@ -59,7 +59,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
           </ul>
         </li>
       </ul>
-      
+
     </div>
     <!-- header ends -->
     <!-- page title starts -->
@@ -67,7 +67,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     <script>
 $("#hideWarning").click(function () {
 $("#warningBox").slideToggle("slow");
-});    
+});
 </script>
     <div class="pageTitle" id="meme1Title">
     <div class="memepic"><img src="/static/images/userpic.png" height="40" width="40"></div>
@@ -104,7 +104,7 @@ $("#warningBox").slideToggle("slow");
 	$('#meme1Trash').tipsy({gravity: 'w'});
     </script>
     <!-- page title ends -->
-    
+
     <div class="pageContent" id="memeContent1" style="display:none">
      <div class="pageColumnsWrap">
      <div class="memeSetting" id="memeSettingID1">
@@ -153,10 +153,10 @@ $("#warningBox").slideToggle("slow");
 </div>
 <!-- tab "panes" -->
 <div class="memePanes">
-	<div>  
+	<div>
      <li>
     <img src="/static/images/rss.png"> <p>This is a rss feed. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!.</p>
-    </li>  
+    </li>
     <li>
     <img src="/static/images/twitter.png"> <p>This is a twitter feed</p>
     </li>
@@ -179,7 +179,7 @@ Google news?
     <img src="/static/images/rss.png"> <p>This is a rss feed</p>
     </li> </div>
 	<div>8 tab content</div>
-</div>     
+</div>
      </div>
      </div>
      <div class="memecontent" id="memeContentAnalysis" style="display:none;">
@@ -193,9 +193,9 @@ Google news?
 <!-- tab "panes" -->
 <div class="memePanes">
 <div>
-	<div class="oneHalf">  
+	<div class="oneHalf">
 <h6>Top Keywords</h6>
-<p>Showing the popularity of your keywords over time.</p>    
+<p>Showing the popularity of your keywords over time.</p>
 <br><br>flash line graph here
 </div>
 
@@ -246,7 +246,7 @@ Google news?
   </tr>
   <tr>
    <td>@whiteafrican</td>
-    <td>121345</td>        
+    <td>121345</td>
     <td><a href="#">+ Add to Meme</a></td>
 
   </tr>
@@ -284,7 +284,7 @@ Google news?
   </tr>
   <tr>
    <td>@whiteafrican</td>
-    <td>121345</td>        
+    <td>121345</td>
     <td><a href="#">+ Add to Meme</a></td>
 
   </tr>
@@ -306,8 +306,8 @@ Google news?
 </table>
     </div>
     </div>
-	<div>   
-    
+	<div>
+
     <div class="oneHalf">
 <h6>Posts per channel</h6>
 <p>description goes here.</p>
@@ -318,8 +318,8 @@ bar graph here
 <p>description goes here.</p>
 pie chart here
     </div>
-    
-    
+
+
     </div>
     	<div>4 tab content</div>
 	<div>5 tab content</div>
@@ -328,7 +328,7 @@ pie chart here
     <img src="/static/images/rss.png"> <p>This is a rss feed</p>
     </li> </div>
 	<div>8 tab content</div>
-</div>     
+</div>
      </div>
      </div>
          <script>
@@ -340,7 +340,7 @@ document.getElementById('memeContentDisplay').style.width='880px';
 document.getElementById('memeContentAnalysis').style.width='880px';
 document.getElementById('memeContentDisplay').style.background='url(images/memeContentFull.png) no-repeat';
 document.getElementById('memeContentAnalysis').style.background='url(images/memeContentFull.png) no-repeat';
-});    
+});
 $("#settingActivator1").click(function () {
 $("#memeSettingID1").toggle("slow");
 $("#settingActivator1").toggle("slow");
@@ -348,31 +348,31 @@ document.getElementById('memeContentDisplay').style.width='600px';
 document.getElementById('memeContentAnalysis').style.width='600px';
 document.getElementById('memeContentDisplay').style.background='url(images/memeContent.png) no-repeat';
 document.getElementById('memeContentAnalysis').style.background='url(images/memeContent.png) no-repeat';
-}); 
+});
 $("#discovery").click(function () {
 document.getElementById('discovery').style.background = 'url(images/memeTabs.png) no-repeat';
 document.getElementById('analysis').style.background = 'url(images/memeTabsInactive.png) no-repeat';
 document.getElementById('memeContentDisplay').style.display='block';
 document.getElementById('memeContentAnalysis').style.display='none';
-});     
+});
 $("#analysis").click(function () {
 document.getElementById('analysis').style.background = 'url(images/memeTabs.png) no-repeat';
 document.getElementById('discovery').style.background = 'url(images/memeTabsInactive.png) no-repeat';
 document.getElementById('memeContentDisplay').style.display='none';
 document.getElementById('memeContentAnalysis').style.display='block';
 
-});     
+});
 
 	$("ul.memeSubTabs ").tabs("div.memePanes > div");
 
 </script>
      </div>
     </div>
-    
-    
-    
+
+
+
         <!-- page title starts -->
-   
+
     <div class="pageTitle" id="meme2Title">
     <div class="memepic"><img src="/static/images/userpic.png" height="40" width="40"></div>
     <div class="description"><h2><a href="#">NIKE #FAIL</a></h2>
@@ -401,7 +401,7 @@ document.getElementById('memeContentAnalysis').style.display='block';
     <div class="memeControl" id="meme2goBig" title="Expand"><a><img src="/static/images/goFull.png"></a></div>
         <div class="memeControl" style="display:none" id="meme2goSmall" title="Reduce"><a><img src="/static/images/goSmall.png"></a></div>
         <div class="memeControl" id="meme2Trash" title="Delete"><a><img src="/static/images/trash.png"></a></div>
-    	
+
     </div>
     <script>
 	$('#meme2goBig').tipsy({gravity: 'w'});
@@ -458,10 +458,10 @@ document.getElementById('memeContentAnalysis').style.display='block';
 </div>
 <!-- tab "panes" -->
 <div class="memePanes">
-	<div>  
+	<div>
      <li>
     <img src="/static/images/rss.png"> <p>This is a rss feed</p>
-    </li>  
+    </li>
     <li>
     <img src="/static/images/twitter.png"> <p>This is a twitter feed</p>
     </li>
@@ -484,7 +484,7 @@ Google news?
     <img src="/static/images/rss.png"> <p>This is a rss feed</p>
     </li> </div>
 	<div>8 tab content</div>
-</div>     
+</div>
      </div>
      </div>
      <div class="memecontent" id="memeContentAnalysis2" style="display:none;">
@@ -497,10 +497,10 @@ Google news?
 </ul>
 <!-- tab "panes" -->
 <div class="memePanes">
-	<div>  
+	<div>
      <li>
     <img src="/static/images/rss.png"> <p>dadslfkjThis is a rss feed</p>
-    </li>  
+    </li>
     <li>
     <img src="/static/images/twitter.png"> <p>This is a twitter feed</p>
     </li>
@@ -523,31 +523,31 @@ Google news?
     <img src="/static/images/rss.png"> <p>This is a rss feed</p>
     </li> </div>
 	<div>8 tab content</div>
-</div>     
+</div>
      </div>
      </div>
          <script>
 $("#settingDeactivator2").click(function () {
 $("#memeSettingID2").toggle("slow");
 $("#settingActivator2").toggle("slow");
-});    
+});
 $("#settingActivator2").click(function () {
 $("#memeSettingID2").toggle("slow");
 $("#settingActivator2").toggle("slow");
-}); 
+});
 $("#discovery2").click(function () {
 document.getElementById('discovery2').style.background = 'url(images/memeTabs.png) no-repeat';
 document.getElementById('analysis2').style.background = 'url(images/memeTabsInactive.png) no-repeat';
 document.getElementById('memeContentDisplay2').style.display='block';
 document.getElementById('memeContentAnalysis2').style.display='none';
-});     
+});
 $("#analysis2").click(function () {
 document.getElementById('analysis2').style.background = 'url(images/memeTabs.png) no-repeat';
 document.getElementById('discovery2').style.background = 'url(images/memeTabsInactive.png) no-repeat';
 document.getElementById('memeContentDisplay2').style.display='none';
 document.getElementById('memeContentAnalysis2').style.display='block';
 
-});     
+});
 
 	$("ul.memeSubTabs ").tabs("div.memePanes > div");
 	$("ul.memeSubTabs2 ").tabs("div.memePanes > div");
@@ -563,23 +563,23 @@ $("#memeContent1").slideToggle("slow");
 $("#meme1goBig").slideToggle("slow");
 $("#meme1goSmall").slideToggle("slow");
 
-});    
+});
 $("#meme2goBig").click(function () {
 $("#memeContent2").slideToggle("slow");
 $("#meme2goBig").slideToggle("slow");
 $("#meme2goSmall").slideToggle("slow");
-}); 
+});
 $("#meme1goSmall").click(function () {
 $("#memeContent1").slideToggle("slow");
 $("#meme1goBig").slideToggle("slow");
 $("#meme1goSmall").slideToggle("slow");
 
-});    
+});
 $("#meme2goSmall").click(function () {
 $("#memeContent2").slideToggle("slow");
 $("#meme2goBig").slideToggle("slow");
 $("#meme2goSmall").slideToggle("slow");
-}); 
+});
 $("#meme1Trash").click(function () {
 document.getElementById('memeContent1').style.display='none';
 document.getElementById('meme1Title').style.display='none';
@@ -597,7 +597,7 @@ document.getElementById('meme2Title').style.display='none';
 				$('.hideButton2').tipsy({gravity: 'n'});
 					$('.settingButton').tipsy({gravity: 'n'});
 
-				
+
 
 </script>
     <!-- page numbers starts -->
@@ -611,7 +611,7 @@ document.getElementById('meme2Title').style.display='none';
   </div>
   <!-- page wrap ends -->
   <div class="footerWrap">
-    
+
 </div>
 <!-- website wrap ends -->
     <!-- Footer -->
@@ -683,10 +683,10 @@ document.getElementById('meme2Title').style.display='none';
 				step		= 0,
 				//total number of steps
 				total_steps	= config.length;
-					
+
 				//show the tour controls
 				showControls();
-				
+
 				/*
 				we can restart or stop the tour,
 				and also navigate through the steps
@@ -697,7 +697,7 @@ document.getElementById('meme2Title').style.display='none';
 				$('#restarttour').live('click',restartTour);
 				$('#nextstep').live('click',nextStep);
 				$('#prevstep').live('click',prevStep);
-				
+
 				function startTour(){
 					$('#activatetour').remove();
 					$('#endtour,#restarttour').show();
@@ -706,7 +706,7 @@ document.getElementById('meme2Title').style.display='none';
 					showOverlay();
 					nextStep();
 				}
-				
+
 				function nextStep(){
 					if(!autoplay){
 						if(step > 0)
@@ -716,8 +716,8 @@ document.getElementById('meme2Title').style.display='none';
 						if(step == total_steps-1)
 							$('#nextstep').hide();
 						else
-							$('#nextstep').show();	
-					}	
+							$('#nextstep').show();
+					}
 					if(step >= total_steps){
 						//if last step then end tour
 						endTour();
@@ -726,7 +726,7 @@ document.getElementById('meme2Title').style.display='none';
 					++step;
 					showTooltip();
 				}
-				
+
 				function prevStep(){
 					if(!autoplay){
 						if(step > 2)
@@ -735,13 +735,13 @@ document.getElementById('meme2Title').style.display='none';
 							$('#prevstep').hide();
 						if(step == total_steps)
 							$('#nextstep').show();
-					}		
+					}
 					if(step <= 1)
 						return false;
 					--step;
 					showTooltip();
 				}
-				
+
 				function endTour(){
 					step = 0;
 					if(autoplay) clearTimeout(showtime);
@@ -749,26 +749,26 @@ document.getElementById('meme2Title').style.display='none';
 					hideControls();
 					hideOverlay();
 				}
-				
+
 				function restartTour(){
 					step = 0;
 					if(autoplay) clearTimeout(showtime);
 					nextStep();
 				}
-				
+
 				function showTooltip(){
 					//remove current tooltip
 					removeTooltip();
-					
+
 					var step_config		= config[step-1];
 					var $elem			= $('.' + step_config.name);
-					
+
 					if(autoplay)
 						showtime	= setTimeout(nextStep,step_config.time);
-					
+
 					var bgcolor 		= step_config.bgcolor;
 					var color	 		= step_config.color;
-					
+
 					var $tooltip		= $('<div>',{
 						id			: 'tour_tooltip',
 						className 	: 'tooltip',
@@ -778,24 +778,24 @@ document.getElementById('meme2Title').style.display='none';
 						'background-color'	: bgcolor,
 						'color'				: color
 					});
-					
+
 					//position the tooltip correctly:
-					
+
 					//the css properties the tooltip should have
 					var properties		= {};
-					
+
 					var tip_position 	= step_config.position;
-					
+
 					//append the tooltip but hide it
 					$('BODY').prepend($tooltip);
-					
+
 					//get some info of the element
 					var e_w				= $elem.outerWidth();
 					var e_h				= $elem.outerHeight();
 					var e_l				= $elem.offset().left;
 					var e_t				= $elem.offset().top;
-					
-					
+
+
 					switch(tip_position){
 						case 'TL'	:
 							properties = {
@@ -882,8 +882,8 @@ document.getElementById('meme2Title').style.display='none';
 							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_L');
 							break;
 					}
-					
-					
+
+
 					/*
 					if the element is not in the viewport
 					we scroll to it before displaying the tooltip
@@ -892,15 +892,15 @@ document.getElementById('meme2Title').style.display='none';
 					var w_b = $(window).scrollTop() + $(window).height();
 					//get the boundaries of the element + tooltip
 					var b_t = parseFloat(properties.top,10);
-					
+
 					if(e_t < b_t)
 						b_t = e_t;
-					
+
 					var b_b = parseFloat(properties.top,10) + $tooltip.height();
 					if((e_t + e_h) > b_b)
 						b_b = e_t + e_h;
-						
-					
+
+
 					if((b_t < w_t || b_t > w_b) || (b_b < w_t || b_b > w_b)){
 						$('html, body').stop()
 						.animate({scrollTop: b_t}, 500, 'easeInOutExpo', function(){
@@ -917,11 +917,11 @@ document.getElementById('meme2Title').style.display='none';
 					//show the new tooltip
 						$tooltip.css(properties).show();
 				}
-				
+
 				function removeTooltip(){
 					$('#tour_tooltip').remove();
 				}
-				
+
 				function showControls(){
 					/*
 					we can restart or stop the tour,
@@ -934,27 +934,27 @@ document.getElementById('meme2Title').style.display='none';
 							$tourcontrols += '<div class="nav"><span class="button" id="prevstep" style="display:none;">< Prev</span>';
 							$tourcontrols += '<span class="button" id="nextstep" style="display:none;">Next ></span></div>';
 						}
-						
+
 						$tourcontrols += '<span class="close" id="canceltour"></span>';
 					$tourcontrols += '</div>';
-					
+
 					$('BODY').prepend($tourcontrols);
 					$('#tourcontrols').animate({'right':'30px'},500);
 				}
-				
+
 				function hideControls(){
 					$('#tourcontrols').remove();
 				}
-				
+
 				function showOverlay(){
 					var $overlay	= '<div id="tour_overlay" class="overlay"></div>';
 					$('BODY').prepend($overlay);
 				}
-				
+
 				function hideOverlay(){
 					$('#tour_overlay').remove();
 				}
-				
+
 			});
         </script>
 
