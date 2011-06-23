@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dashboard - Discovery</title>
+<!-- styles start -->
+<link href="./css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/jquerytour.css" />
+    <link rel="stylesheet" href="css/tipsy.css" type="text/css" />
+<!--[if gte IE 8]>
+<link rel="stylesheet" type="text/css" href="./css/ie8.css" />
+<![endif]-->
+<!-- styles end -->
+<link type="image/gif" rel="shortcut icon" href="./images/favicon.ico" />
+<!-- scripts start -->
+<script type="text/javascript" src="./js/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="./js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="./js/jquery.tools.min.js"></script>
+<script src="./cufon/cufon-yui.js" type="text/javascript"></script>
+<script type="text/javascript" src="./js/myScript.js"></script>
+<script type='text/javascript' src='./js/jquery.tipsy.js'></script>
+
+<!-- scripts end -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+</script>
+</head>
+<body>
+<!-- website wrap starts -->
+<div class="websiteWrap">
+  <!-- page wrap starts -->
+  <div class="pageWrap">
+    <!-- header starts -->
+    <div class="headerWrap"> <a href="./index.html" class="mainLogo"><img src="./images/logo.png" alt="" /></a>
+      <ul class="mainMenu">
+      <li>
+      
+<form action="" >
+<input type="text" class="searchbox" name="s" value="Search..." />
+<input type="image" src="images/search.png" class="searchbox_submit" value="" />
+</form>
+      </li>
+      <li><a href="#">New Meme <img src="images/icon-write-big.png" height="16" width="16"></a></li>
+      <li><a href="#">All Memes <img src="images/icon-pulldown.png" height="16" width="16"></a>
+          <ul class="subMenu">
+            <li><a href="#">pull down item</a></li>
+            <li><a href="#">pull down item</a></li>
+          </ul>
+        </li>
+        <li class="tour_1"><a href="#"><img src="images/userpic.png" align="left"> Username@swiftly.org <img src="images/icon-pulldown.png" height="16" width="16"></a>
+          <ul class="subMenu">
+            <li><a href="#">Account Settings</a></li>
+            <li><a href="#">Preferences</a></li>
+<hr />            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+    </div>
+    <!-- header ends -->
+    <!-- page title starts -->
+    <p id="warningBox" class="warning">Yikes you are getting close to reaching your bandwidth limit for this month. About <a href="#">340MB</a> remains.           <a id="hideWarning" class="hideButton"></a></p>
+    <script>
+$("#hideWarning").click(function () {
+$("#warningBox").slideToggle("slow");
+});    
+</script>
+    <div class="pageTitle" id="meme1Title">
+    <div class="memepic"><img src="images/userpic.png" height="40" width="40"></div>
+    <div class="description"><h2  class="tour_2"><a href="#">NIKE #FAIL</a></h2>
+    <p>Monitoring any pain points people are having around Nike.</p>
+    <p>Keywords: <a href="#">NIKE</a> <a href="#">FAIL</a></p>
+    <p>Channels: <img src="images/rss.png" height="15" width="15"> <img src="images/twitter.png" height="15" width="15"></p>
+    </div>
+    <div class="quickStat">
+    <p>QUICK STATS</p>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><p>posts</p>
+      <p>100</p></td>
+    <td><p>sources</p>
+      <p>230</p></td>
+  </tr>
+  <tr>
+    <td><p>keywords</p>
+      <p>234</p></td>
+    <td><p>channels</p><p>234</p></td>
+  </tr>
+</table>
+    </div>
+    <div class="recentActivity"><p>RECENT ACTIVITY</p>
+    <img height="92" width="350"></div>
+    <div class="memeControl" id="meme1goBig" title="Expand"><a ><div class="meme1goBigClass"></div><img src="images/goFull.png"></a></div>
+        <div class="memeControl" style="display:none" id="meme1goSmall" title="Reduce"><a><img src="images/goSmall.png"></a></div>
+        <div class="memeControl" id="meme1Trash" title="Delete"><a><div class="meme1TrashClass"></div><img src="images/trash.png"></a></div>
+    </div>
+    <script>
+	$('#meme1goBig').tipsy({gravity: 'w'});
+	$('#meme1goSmall').tipsy({gravity: 'w'});
+	$('#meme1Trash').tipsy({gravity: 'w'});
+    </script>
+    <!-- page title ends -->
+    
+    <div class="pageContent" id="memeContent1" style="display:none">
+     <div class="pageColumnsWrap">
+     <div class="memeSetting" id="memeSettingID1">
+     <h3>Meme Settings<a id="settingDeactivator1" class="hideButton2" title="Hide"></a></h3>
+     <h5>Keywords To Monitor <img src="images/Question.png"></h5>
+     <form class="memesettingform" name="form1" method="post" action="">
+        <label>Look for content tagged with
+          <textarea name="yesTag" id="yesTag" cols="43" rows="3"></textarea>
+        </label><br>
+        <label>But it should not be tagged with
+        <textarea name="noTag" cols="43" rows="3"></textarea>
+        </label>
+      </form>
+      <p><a href="#" class="save" title="Save"><img src="images/Save.png" align="texttop"></a> |
+ <a href="#" class="reset" title="Reset"><img src="images/reset.png" align="texttop"></a><br></p>
+           <h5>Content Sources <img src="images/Question.png"></h5>
+     </div>
+          <div id="settingActivator1"><a class="settingButton" title="Change meme settings"></a></div>
+          <a id="discovery" class="memetabActive"><h1>Discovery</h1></a><a id="analysis" class="memetabInactive"><h1>Analysis</h1></a>
+
+     <div class="memecontent" id="memeContentDisplay">
+     <div class="tour_3">
+     <ul class="memeSubTabs ">
+	<li><a href="#">All</a></li>
+	<li><a href="#">Google</a></li>
+	<li><a href="#">Twitter</a></li>
+    	<li><a href="#">SMS</a></li>
+	<li><a href="#">Email</a></li>
+	<li><a href="#">Flickr</a></li>
+	<li><a href="#">RSS</a></li>
+	<li><a href="#">Eventful</a></li>
+</ul>
+<div class="memeSubControl">
+<form name="form" id="form">
+<label>From:</label>
+  <select name="jumpMenu" id="jumpMenu" onChange="MM_jumpMenu('parent',this,0)">
+    <option>1 weeks ago</option>
+    <option>Today</option>
+  </select>
+  <label>Veracity</label>
+  <input type="range"  min="0" max="100" />
+  <label>Search</label>
+<input type="text" class="memeSearchbox" name="s" value="Search..." />
+</form>
+
+</div>
+<!-- tab "panes" -->
+<div class="memePanes">
+	<div>  
+     <li>
+    <img src="images/rss.png"> <p>This is a rss feed. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!. I am long. This is for width adjustment testing!.</p>
+    </li>  
+    <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li>
+       <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li></div>
+	<div>
+Google news?
+    </div>
+	<div>    <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li>
+       <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li></div>
+    	<div>4 tab content</div>
+	<div>5 tab content</div>
+	<div>6 tab content</div>
+	<div><li>
+    <img src="images/rss.png"> <p>This is a rss feed</p>
+    </li> </div>
+	<div>8 tab content</div>
+</div>     
+     </div>
+     </div>
+     <div class="memecontent" id="memeContentAnalysis" style="display:none;">
+     <div class="tour_3">
+     <ul class="memeSubTabs2">
+	<li><a href="#">Overview</a></li>
+	<li><a href="#">Channels</a></li>
+	<li><a href="#">Sources</a></li>
+    	<li><a href="#">Location</a></li>
+</ul>
+<!-- tab "panes" -->
+<div class="memePanes">
+<div>
+	<div class="oneHalf">  
+<h6>Top Keywords</h6>
+<p>Showing the popularity of your keywords over time.</p>    
+<br><br>flash line graph here
+</div>
+
+	<div class="oneHalf">
+<h6>Top Sources</h6>
+<p>Showing the sources that contribute the most parts to your meme.</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr class="memePaneTableTitle">
+    <td>Source</td>
+    <td>Posts</td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+  </tr>
+  <tr>
+   <td>@whiteafrican</td>
+    <td>121345</td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+  </tr>
+</table>
+</div>
+
+<div class="oneHalf">
+<h6>New Keywords</h6>
+<p>A ranked list of keywords that appear in the  posts but are not included in 7 keywords currently in your meme.</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr class="memePaneTableTitle">
+    <td>Keyword</td>
+    <td>Occurance</td>
+        <td>Action</td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+        <td><a href="#">+ Add to Meme</a></td>
+  </tr>
+  <tr>
+   <td>@whiteafrican</td>
+    <td>121345</td>        
+    <td><a href="#">+ Add to Meme</a></td>
+
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+    <td><a href="#">+ Add to Meme</a></td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+    <td><a href="#">+ Add to Meme</a></td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+    <td><a href="#">+ Add to Meme</a></td>
+  </tr>
+</table>
+</div>
+
+<div class="oneHalf">
+<h6>Top Locations</h6>
+<p>Google Map goes here.</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr class="memePaneTableTitle">
+    <td>Location</td>
+    <td>Posts</td>
+        <td>Local Sentiment</td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+        <td>:)</td>
+  </tr>
+  <tr>
+   <td>@whiteafrican</td>
+    <td>121345</td>        
+    <td><a href="#">+ Add to Meme</a></td>
+
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+    <td><a href="#">+ Add to Meme</a></td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+    <td><a href="#">+ Add to Meme</a></td>
+  </tr>
+  <tr>
+    <td>@whiteafrican</td>
+    <td>121345</td>
+    <td><a href="#">+ Add to Meme</a></td>
+  </tr>
+</table>
+    </div>
+    </div>
+	<div>   
+    
+    <div class="oneHalf">
+<h6>Posts per channel</h6>
+<p>description goes here.</p>
+bar graph here
+    </div>
+    <div class="oneHalf">
+<h6>Percentage of posts per channel</h6>
+<p>description goes here.</p>
+pie chart here
+    </div>
+    
+    
+    </div>
+    	<div>4 tab content</div>
+	<div>5 tab content</div>
+	<div>6 tab content</div>
+	<div><li>
+    <img src="images/rss.png"> <p>This is a rss feed</p>
+    </li> </div>
+	<div>8 tab content</div>
+</div>     
+     </div>
+     </div>
+         <script>
+$("#settingDeactivator1").click(function () {
+	document.getElementById('memeSettingID1').style.display='none';
+//$("#memeSettingID1").toggle("slow");
+$("#settingActivator1").toggle("slow");
+document.getElementById('memeContentDisplay').style.width='880px';
+document.getElementById('memeContentAnalysis').style.width='880px';
+document.getElementById('memeContentDisplay').style.background='url(images/memeContentFull.png) no-repeat';
+document.getElementById('memeContentAnalysis').style.background='url(images/memeContentFull.png) no-repeat';
+});    
+$("#settingActivator1").click(function () {
+$("#memeSettingID1").toggle("slow");
+$("#settingActivator1").toggle("slow");
+document.getElementById('memeContentDisplay').style.width='600px';
+document.getElementById('memeContentAnalysis').style.width='600px';
+document.getElementById('memeContentDisplay').style.background='url(images/memeContent.png) no-repeat';
+document.getElementById('memeContentAnalysis').style.background='url(images/memeContent.png) no-repeat';
+}); 
+$("#discovery").click(function () {
+document.getElementById('discovery').style.background = 'url(images/memeTabs.png) no-repeat';
+document.getElementById('analysis').style.background = 'url(images/memeTabsInactive.png) no-repeat';
+document.getElementById('memeContentDisplay').style.display='block';
+document.getElementById('memeContentAnalysis').style.display='none';
+});     
+$("#analysis").click(function () {
+document.getElementById('analysis').style.background = 'url(images/memeTabs.png) no-repeat';
+document.getElementById('discovery').style.background = 'url(images/memeTabsInactive.png) no-repeat';
+document.getElementById('memeContentDisplay').style.display='none';
+document.getElementById('memeContentAnalysis').style.display='block';
+
+});     
+
+	$("ul.memeSubTabs ").tabs("div.memePanes > div");
+
+</script>
+     </div>
+    </div>
+    
+    
+    
+        <!-- page title starts -->
+   
+    <div class="pageTitle" id="meme2Title">
+    <div class="memepic"><img src="images/userpic.png" height="40" width="40"></div>
+    <div class="description"><h2><a href="#">NIKE #FAIL</a></h2>
+    <p>Monitoring any pain points people are having around Nike.</p>
+    <p>Keywords: <a href="#">NIKE</a> <a href="#">FAIL</a></p>
+    <p>Channels: <img src="images/rss.png" height="15" width="15"> <img src="images/twitter.png" height="15" width="15"></p>
+    </div>
+    <div class="quickStat">
+    <p>QUICK STATS</p>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><p>posts</p>
+      <p>100</p></td>
+    <td><p>sources</p>
+      <p>230</p></td>
+  </tr>
+  <tr>
+    <td><p>keywords</p>
+      <p>234</p></td>
+    <td><p>channels</p><p>234</p></td>
+  </tr>
+</table>
+    </div>
+    <div class="recentActivity"><p>RECENT ACTIVITY</p>
+    <img height="92" width="350"></div>
+    <div class="memeControl" id="meme2goBig" title="Expand"><a><img src="images/goFull.png"></a></div>
+        <div class="memeControl" style="display:none" id="meme2goSmall" title="Reduce"><a><img src="images/goSmall.png"></a></div>
+        <div class="memeControl" id="meme2Trash" title="Delete"><a><img src="images/trash.png"></a></div>
+    	
+    </div>
+    <script>
+	$('#meme2goBig').tipsy({gravity: 'w'});
+	$('#meme2Trash').tipsy({gravity: 'w'});
+	$('#meme2goSmall').tipsy({gravity: 'w'});
+    </script>
+    <!-- page title ends -->
+    <!-- page content starts -->
+    <div class="pageContent" id="memeContent2" style="display:none">
+     <div class="pageColumnsWrap">
+     <div class="memeSetting" id="memeSettingID2">
+     <h3>Meme Settings<a id="settingDeactivator2" class="hideButton2" title="Hide"></a></h3>
+     <h5>Keywords To Monitor <img src="images/Question.png"></h5>
+     <form class="memesettingform" name="form1" method="post" action="">
+        <label>Look for content tagged with
+          <textarea name="yesTag" id="yesTag" cols="43" rows="3"></textarea>
+        </label><br>
+        <label>But it should not be tagged with
+        <textarea name="noTag" cols="43" rows="3"></textarea>
+        </label>
+      </form>
+      <p><a href="#" class="save" title="Save"><img src="images/Save.png" align="texttop"></a> |
+ <a href="#" class="reset" title="Reset"><img src="images/reset.png" align="texttop"></a><br></p>
+           <h5>Content Sources <img src="images/Question.png"></h5>
+     </div>
+          <div id="settingActivator2"><a class="settingButton" title="Change meme settings"></a></div>
+          <a id="discovery2" class="memetabActive"><h1>Discovery</h1></a><a id="analysis2" class="memetabInactive"><h1>Analysis</h1></a>
+
+     <div class="memecontent" id="memeContentDisplay2">
+     <div class="tour_3">
+     <ul class="memeSubTabs ">
+	<li><a href="#">All</a></li>
+	<li><a href="#">Google</a></li>
+	<li><a href="#">Twitter</a></li>
+    	<li><a href="#">SMS</a></li>
+	<li><a href="#">Email</a></li>
+	<li><a href="#">Flickr</a></li>
+	<li><a href="#">RSS</a></li>
+	<li><a href="#">Eventful</a></li>
+</ul>
+<div class="memeSubControl">
+<form name="form" id="form">
+<label>From:</label>
+  <select name="jumpMenu" id="jumpMenu" onChange="MM_jumpMenu('parent',this,0)">
+    <option>1 weeks ago</option>
+    <option>Today</option>
+  </select>
+  <label>Veracity</label>
+  <input type="range"  min="0" max="100" />
+  <label>Search</label>
+<input type="text" class="memeSearchbox" name="s" value="Search..." />
+</form>
+
+</div>
+<!-- tab "panes" -->
+<div class="memePanes">
+	<div>  
+     <li>
+    <img src="images/rss.png"> <p>This is a rss feed</p>
+    </li>  
+    <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li>
+       <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li></div>
+	<div>
+Google news?
+    </div>
+	<div>    <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li>
+       <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li></div>
+    	<div>4 tab content</div>
+	<div>5 tab content</div>
+	<div>6 tab content</div>
+	<div><li>
+    <img src="images/rss.png"> <p>This is a rss feed</p>
+    </li> </div>
+	<div>8 tab content</div>
+</div>     
+     </div>
+     </div>
+     <div class="memecontent" id="memeContentAnalysis2" style="display:none;">
+     <div class="tour_3">
+     <ul class="memeSubTabs2 ">
+	<li><a href="#">Overview</a></li>
+	<li><a href="#">Channels</a></li>
+	<li><a href="#">Sources</a></li>
+    	<li><a href="#">Location</a></li>
+</ul>
+<!-- tab "panes" -->
+<div class="memePanes">
+	<div>  
+     <li>
+    <img src="images/rss.png"> <p>dadslfkjThis is a rss feed</p>
+    </li>  
+    <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li>
+       <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li></div>
+	<div>
+Google news?
+    </div>
+	<div>    <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li>
+       <li>
+    <img src="images/twitter.png"> <p>This is a twitter feed</p>
+    </li></div>
+    	<div>4 tab content</div>
+	<div>5 tab content</div>
+	<div>6 tab content</div>
+	<div><li>
+    <img src="images/rss.png"> <p>This is a rss feed</p>
+    </li> </div>
+	<div>8 tab content</div>
+</div>     
+     </div>
+     </div>
+         <script>
+$("#settingDeactivator2").click(function () {
+$("#memeSettingID2").toggle("slow");
+$("#settingActivator2").toggle("slow");
+});    
+$("#settingActivator2").click(function () {
+$("#memeSettingID2").toggle("slow");
+$("#settingActivator2").toggle("slow");
+}); 
+$("#discovery2").click(function () {
+document.getElementById('discovery2').style.background = 'url(images/memeTabs.png) no-repeat';
+document.getElementById('analysis2').style.background = 'url(images/memeTabsInactive.png) no-repeat';
+document.getElementById('memeContentDisplay2').style.display='block';
+document.getElementById('memeContentAnalysis2').style.display='none';
+});     
+$("#analysis2").click(function () {
+document.getElementById('analysis2').style.background = 'url(images/memeTabs.png) no-repeat';
+document.getElementById('discovery2').style.background = 'url(images/memeTabsInactive.png) no-repeat';
+document.getElementById('memeContentDisplay2').style.display='none';
+document.getElementById('memeContentAnalysis2').style.display='block';
+
+});     
+
+	$("ul.memeSubTabs ").tabs("div.memePanes > div");
+	$("ul.memeSubTabs2 ").tabs("div.memePanes > div");
+
+
+</script>
+     </div>
+    </div>
+    <!-- page content ends -->
+             <script>
+$("#meme1goBig").click(function () {
+$("#memeContent1").slideToggle("slow");
+$("#meme1goBig").slideToggle("slow");
+$("#meme1goSmall").slideToggle("slow");
+
+});    
+$("#meme2goBig").click(function () {
+$("#memeContent2").slideToggle("slow");
+$("#meme2goBig").slideToggle("slow");
+$("#meme2goSmall").slideToggle("slow");
+}); 
+$("#meme1goSmall").click(function () {
+$("#memeContent1").slideToggle("slow");
+$("#meme1goBig").slideToggle("slow");
+$("#meme1goSmall").slideToggle("slow");
+
+});    
+$("#meme2goSmall").click(function () {
+$("#memeContent2").slideToggle("slow");
+$("#meme2goBig").slideToggle("slow");
+$("#meme2goSmall").slideToggle("slow");
+}); 
+$("#meme1Trash").click(function () {
+document.getElementById('memeContent1').style.display='none';
+document.getElementById('meme1Title').style.display='none';
+});
+$("#meme2Trash").click(function () {
+document.getElementById('memeContent2').style.display='none';
+document.getElementById('meme2Title').style.display='none';
+
+
+});
+
+
+	$('.save').tipsy({gravity: 'e'});
+		$('.reset').tipsy({gravity: 'w'});
+				$('.hideButton2').tipsy({gravity: 'n'});
+					$('.settingButton').tipsy({gravity: 'n'});
+
+				
+
+</script>
+    <!-- page numbers starts -->
+    <div class="pageNumbers">
+      <ul>
+        <li><a href="#" class="pageNumber">1</a></li>
+        <li><a class="pageNumber" href="#">2</a></li>
+      </ul>
+    </div>
+    <!-- page numbers end -->
+  </div>
+  <!-- page wrap ends -->
+  <div class="footerWrap">
+    
+</div>
+<!-- website wrap ends -->
+    <!-- Footer -->
+    <div id="Footer"><b>Meme:</b> A catchphrase or concept that spreads quickly from person to person on the internet.
+
+<br>&copy; SwiftRiver <a href="/about">About SwiftMeme</a> | <a href="/terms">Terms of Service</a> | <a href="/privacy">Privacy Policy</a>
+
+    </div>
+	<!-- /Footer -->
+</div>
+
+
+        <script type="text/javascript">
+			$(function() {
+				/*
+				the json config obj.
+				name: the class given to the element where you want the tooltip to appear
+				bgcolor: the background color of the tooltip
+				color: the color of the tooltip text
+				text: the text inside the tooltip
+				time: if automatic tour, then this is the time in ms for this step
+				position: the position of the tip. Possible values are
+					TL	top left
+					TR  top right
+					BL  bottom left
+					BR  bottom right
+					LT  left top
+					LB  left bottom
+					RT  right top
+					RB  right bottom
+					T   top
+					R   right
+					B   bottom
+					L   left
+				 */
+				var config = [
+					{
+						"name" 		: "tour_1",
+						"bgcolor"	: "black",
+						"color"		: "white",
+						"position"	: "TR",
+						"text"		: "Here you can access your account information as well as your current usage.",
+						"time" 		: 5000
+					},
+					{
+						"name" 		: "meme1goBigClass",
+						"bgcolor"	: "black",
+						"color"		: "white",
+						"text"		: "Click on this icon to expand and view detailed analysis.",
+						"position"	: "BR",
+						"time" 		: 5000
+					},
+					{
+						"name" 		: "meme1TrashClass",
+						"bgcolor"	: "black",
+						"color"		: "white",
+						"text"		: "Click on this icon to delete meme.",
+						"position"	: "BR",
+						"time" 		: 5000
+					}
+
+
+				],
+				//define if steps should change automatically
+				autoplay	= false,
+				//timeout for the step
+				showtime,
+				//current step of the tour
+				step		= 0,
+				//total number of steps
+				total_steps	= config.length;
+					
+				//show the tour controls
+				showControls();
+				
+				/*
+				we can restart or stop the tour,
+				and also navigate through the steps
+				 */
+				$('#activatetour').live('click',startTour);
+				$('#canceltour').live('click',endTour);
+				$('#endtour').live('click',endTour);
+				$('#restarttour').live('click',restartTour);
+				$('#nextstep').live('click',nextStep);
+				$('#prevstep').live('click',prevStep);
+				
+				function startTour(){
+					$('#activatetour').remove();
+					$('#endtour,#restarttour').show();
+					if(!autoplay && total_steps > 1)
+						$('#nextstep').show();
+					showOverlay();
+					nextStep();
+				}
+				
+				function nextStep(){
+					if(!autoplay){
+						if(step > 0)
+							$('#prevstep').show();
+						else
+							$('#prevstep').hide();
+						if(step == total_steps-1)
+							$('#nextstep').hide();
+						else
+							$('#nextstep').show();	
+					}	
+					if(step >= total_steps){
+						//if last step then end tour
+						endTour();
+						return false;
+					}
+					++step;
+					showTooltip();
+				}
+				
+				function prevStep(){
+					if(!autoplay){
+						if(step > 2)
+							$('#prevstep').show();
+						else
+							$('#prevstep').hide();
+						if(step == total_steps)
+							$('#nextstep').show();
+					}		
+					if(step <= 1)
+						return false;
+					--step;
+					showTooltip();
+				}
+				
+				function endTour(){
+					step = 0;
+					if(autoplay) clearTimeout(showtime);
+					removeTooltip();
+					hideControls();
+					hideOverlay();
+				}
+				
+				function restartTour(){
+					step = 0;
+					if(autoplay) clearTimeout(showtime);
+					nextStep();
+				}
+				
+				function showTooltip(){
+					//remove current tooltip
+					removeTooltip();
+					
+					var step_config		= config[step-1];
+					var $elem			= $('.' + step_config.name);
+					
+					if(autoplay)
+						showtime	= setTimeout(nextStep,step_config.time);
+					
+					var bgcolor 		= step_config.bgcolor;
+					var color	 		= step_config.color;
+					
+					var $tooltip		= $('<div>',{
+						id			: 'tour_tooltip',
+						className 	: 'tooltip',
+						html		: '<p>'+step_config.text+'</p><span class="tooltip_arrow"></span>'
+					}).css({
+						'display'			: 'none',
+						'background-color'	: bgcolor,
+						'color'				: color
+					});
+					
+					//position the tooltip correctly:
+					
+					//the css properties the tooltip should have
+					var properties		= {};
+					
+					var tip_position 	= step_config.position;
+					
+					//append the tooltip but hide it
+					$('BODY').prepend($tooltip);
+					
+					//get some info of the element
+					var e_w				= $elem.outerWidth();
+					var e_h				= $elem.outerHeight();
+					var e_l				= $elem.offset().left;
+					var e_t				= $elem.offset().top;
+					
+					
+					switch(tip_position){
+						case 'TL'	:
+							properties = {
+								'left'	: e_l,
+								'top'	: e_t + e_h + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_TL');
+							break;
+						case 'TR'	:
+							properties = {
+								'left'	: e_l + e_w - $tooltip.width() + 'px',
+								'top'	: e_t + e_h + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_TR');
+							break;
+						case 'BL'	:
+							properties = {
+								'left'	: e_l + 'px',
+								'top'	: e_t - $tooltip.height() + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_BL');
+							break;
+						case 'BR'	:
+							properties = {
+								'left'	: e_l + e_w - $tooltip.width() + 'px',
+								'top'	: e_t - $tooltip.height() + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_BR');
+							break;
+						case 'LT'	:
+							properties = {
+								'left'	: e_l + e_w + 'px',
+								'top'	: e_t + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_LT');
+							break;
+						case 'LB'	:
+							properties = {
+								'left'	: e_l + e_w + 'px',
+								'top'	: e_t + e_h - $tooltip.height() + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_LB');
+							break;
+						case 'RT'	:
+							properties = {
+								'left'	: e_l - $tooltip.width() + 'px',
+								'top'	: e_t + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_RT');
+							break;
+						case 'RB'	:
+							properties = {
+								'left'	: e_l - $tooltip.width() + 'px',
+								'top'	: e_t + e_h - $tooltip.height() + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_RB');
+							break;
+						case 'T'	:
+							properties = {
+								'left'	: e_l + e_w/2 - $tooltip.width()/2 + 'px',
+								'top'	: e_t + e_h + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_T');
+							break;
+						case 'R'	:
+							properties = {
+								'left'	: e_l - $tooltip.width() + 'px',
+								'top'	: e_t + e_h/2 - $tooltip.height()/2 + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_R');
+							break;
+						case 'B'	:
+							properties = {
+								'left'	: e_l + e_w/2 - $tooltip.width()/2 + 'px',
+								'top'	: e_t - $tooltip.height() + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_B');
+							break;
+						case 'L'	:
+							properties = {
+								'left'	: e_l + e_w  + 'px',
+								'top'	: e_t + e_h/2 - $tooltip.height()/2 + 'px'
+							};
+							$tooltip.find('span.tooltip_arrow').addClass('tooltip_arrow_L');
+							break;
+					}
+					
+					
+					/*
+					if the element is not in the viewport
+					we scroll to it before displaying the tooltip
+					 */
+					var w_t	= $(window).scrollTop();
+					var w_b = $(window).scrollTop() + $(window).height();
+					//get the boundaries of the element + tooltip
+					var b_t = parseFloat(properties.top,10);
+					
+					if(e_t < b_t)
+						b_t = e_t;
+					
+					var b_b = parseFloat(properties.top,10) + $tooltip.height();
+					if((e_t + e_h) > b_b)
+						b_b = e_t + e_h;
+						
+					
+					if((b_t < w_t || b_t > w_b) || (b_b < w_t || b_b > w_b)){
+						$('html, body').stop()
+						.animate({scrollTop: b_t}, 500, 'easeInOutExpo', function(){
+							//need to reset the timeout because of the animation delay
+							if(autoplay){
+								clearTimeout(showtime);
+								showtime = setTimeout(nextStep,step_config.time);
+							}
+							//show the new tooltip
+							$tooltip.css(properties).show();
+						});
+					}
+					else
+					//show the new tooltip
+						$tooltip.css(properties).show();
+				}
+				
+				function removeTooltip(){
+					$('#tour_tooltip').remove();
+				}
+				
+				function showControls(){
+					/*
+					we can restart or stop the tour,
+					and also navigate through the steps
+					 */
+					var $tourcontrols  = '<div id="tourcontrols" class="tourcontrols">';
+					$tourcontrols += '<p>Need Help?</p>';
+					$tourcontrols += '<span class="button" id="activatetour">Start the tour</span>';
+						if(!autoplay){
+							$tourcontrols += '<div class="nav"><span class="button" id="prevstep" style="display:none;">< Prev</span>';
+							$tourcontrols += '<span class="button" id="nextstep" style="display:none;">Next ></span></div>';
+						}
+						
+						$tourcontrols += '<span class="close" id="canceltour"></span>';
+					$tourcontrols += '</div>';
+					
+					$('BODY').prepend($tourcontrols);
+					$('#tourcontrols').animate({'right':'30px'},500);
+				}
+				
+				function hideControls(){
+					$('#tourcontrols').remove();
+				}
+				
+				function showOverlay(){
+					var $overlay	= '<div id="tour_overlay" class="overlay"></div>';
+					$('BODY').prepend($overlay);
+				}
+				
+				function hideOverlay(){
+					$('#tour_overlay').remove();
+				}
+				
+			});
+        </script>
+
+
+</body>
+</html>
