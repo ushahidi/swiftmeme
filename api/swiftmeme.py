@@ -20,7 +20,7 @@ app = flask.Flask(__name__)
 mc = memcache.Client(config.MEMCACHE_HOSTS)
 gw = gateway.Gateway(config.GATEWAY_BASE, config.GATEWAY_KEY, config.GATEWAY_SECRET, mc, config.MEMCACHE_EXPIRE)
 
-@app.route("/api/<method>", methods=["POST"])
+@app.route("/api/<method>")
 def api(method):
     result = getattr(gw, method)(**flask.request.json)
     response = flask.make_response(result)
