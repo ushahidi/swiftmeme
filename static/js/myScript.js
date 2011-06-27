@@ -1,19 +1,19 @@
 // scroll back to top
-var $ = jQuery.noConflict(); 
+var $ = jQuery.noConflict();
 
 //cufon
 Cufon.replace('h1, h2, h3, h4, h5, h6, label');
 			Cufon.replace('.mainMenu> li > a',{
-						  hover: true						             
+						  hover: true
 			});
 
-//back to top			
+//back to top
 $(document).ready(function() {
-			
+
 
 /* top menu */
-$(".mainMenu > li").hover(function() {   
-    $(this).find(".subMenu").animate({ 
+$(".mainMenu > li").hover(function() {
+    $(this).find(".subMenu").animate({
                                  height: "show"
                                  },150);
 },function(){
@@ -25,21 +25,14 @@ $(".mainMenu > li").hover(function() {
 // animate social links
 $('.socialDetails a').hover(
 							  function(){
-			
+
 		$(this).stop().animate({"margin-top": "-5px"}, 100);
-		
+
 	},
 	function(){
-		
+
 		$(this).stop().animate({"margin-top": "0px"}, 100);
-	
+
 });
- 
-//jquery tabs	
-$(".pageNumbers > ul").tabs("div.portfolioWrap > ul li",{
-						  effect: 'fade',
-						  fadeSpeed: 300
-							});
 
-
-  }); 
+  });
