@@ -22,7 +22,7 @@ gw = gateway.Gateway(config.GATEWAY_BASE, config.GATEWAY_KEY, config.GATEWAY_SEC
 
 @app.route("/api/<method>")
 def api(method):
-    result = getattr(gw, method)(**flask.request.args)
+    result = getattr(gw, method)(**flask.request.args.to_dict())
     response = flask.make_response(result)
     response.headers["Content-Type"] = "application/json; charset=UTF-8"
     return response
