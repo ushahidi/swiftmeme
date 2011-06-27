@@ -3,4 +3,5 @@ $("#loginbutton").submit(function() {
   localStorage.setItem("memes", JSON.dumps(data.response.memes));
   alert(localStorage.getItem("memes"));
  });
+ return false;
 });
