@@ -26,3 +26,6 @@ $("#signupBox").live("submit", function() {
 $("#loginActivator").live("click", function() {
  $("#loginDIV").slideToggle("slow");
 });
+$(".signupButtons").live("click", function() {
+ $("#signupDIV").slideToggle("slow");
+});
