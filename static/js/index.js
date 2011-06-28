@@ -24,8 +24,10 @@ $("#signupBox").live("submit", function() {
  return false;
 });
 $("#loginActivator").live("click", function() {
+ $("#signupDIV:visible").slideUp("slow");
  $("#loginDIV").slideToggle("slow");
 });
 $(".signupButtons").live("click", function() {
+ $("#loginDIV:visible").slideup("slow");
  $("#signupDIV").slideToggle("slow");
 });
