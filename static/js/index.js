@@ -28,6 +28,6 @@ $("#loginActivator").live("click", function() {
  $("#loginDIV").slideToggle("slow");
 });
 $(".signupButtons").live("click", function() {
- $("#loginDIV:visible").slideup("slow");
+ $("#loginDIV:visible").slideUp("slow");
  $("#signupDIV").slideToggle("slow");
 });
