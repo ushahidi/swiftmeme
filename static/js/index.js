@@ -1,8 +1,13 @@
 $("#loginBox").live("submit", function() {
  var params = {"riverid": $("#loginriverid").val(), "password": $("#loginpassword").val()};
  $.getJSON("/api/authenticate", params, function(data) {
-  localStorage.setItem("memes", JSON.stringify(data.response.memes));
-  location = "/dashboard";
+  if (data.status == "success") {
+   localStorage.setItem("memes", JSON.stringify(data.response.memes));
+   location = "/dashboard";
+  } else {
+   $("#loginerror").text(data.response.errors.pop());
+   $("#loginpassword").val("").focus();
+  }
  });
  return false;
 });
