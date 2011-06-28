@@ -14,8 +14,12 @@ $("#loginBox").live("submit", function() {
 $("#signupBox").live("submit", function() {
  var params = {"riverid": $("#registerriverid").val(), "password": $("#registerpassword").val(), "emailaddress": $("#registeremailaddress").val()};
  $.getJSON("/api/register", params, function(data) {
-  localStorage.setItem("memes", JSON.stringify(data.response.memes));
-  location = "/dashboard";
+  if (data.status == "success") {
+   localStorage.setItem("memes", JSON.stringify(data.response.memes));
+   location = "/dashboard";
+  } else {
+   $("#signuperror").text(data.response.errors.pop());
+  }
  });
  return false;
 });
