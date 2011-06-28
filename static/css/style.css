@@ -971,6 +971,6 @@ hr {
 .warning a {
 	text-decoration:underline;
 }
-#loginerror {
+.error {
  color: #BD0000;
 }

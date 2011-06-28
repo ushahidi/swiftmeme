@@ -39,7 +39,7 @@
                 <label>Password</label>
                 <input type="password" name="passWord" id="loginpassword" size="30" value="" class="text-input" />
                 <button>Login</button>
-                <span id="loginerror"></span>
+                <div id="loginerror" class="error"></div>
             </form></div>
 
             <div align="center" class = "signupForm" id="signupDIV" style="display:none"><form id="signupBox" />
@@ -49,8 +49,8 @@
                 <input type="password" name="passWord" id="registerpassword" size="30" value="" class="text-input" />
                 <label>Email</label>
                 <input type="text" name="Email" id="registeremailaddress" size="30" value="" class="text-input" />
-                <span id="registerrror"></span>
                 <button>Sign Up!</button>
+                <div id="signuperror" class="error"></div>
             </form></div>
 			<script>
 $("#loginActivator").click(function () {
