@@ -23,3 +23,6 @@ $("#signupBox").live("submit", function() {
  });
  return false;
 });
+$("#loginActivator").live("click", function() {
+ $("#loginDIV").slideToggle("slow");
+});
