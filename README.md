@@ -31,6 +31,18 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 3. Execute: `curl https://raw.github.com/ushahidi/SwiftMeme/master/deploy/ubuntu/install.sh | bash`
 4. The configuration file will open in `vim`; focus on the gateway, the rest should be fine as-is.
 
+## Apache Configuration
+
+    <VirtualHost *:80>
+     Alias /static/ /var/www/swiftmeme/static/
+     AliasMatch ^/$ /var/www/swiftmeme/static/index.html
+     AliasMatch ^/dashboard$ /var/www/swiftmeme/static/dashboard.html
+     WSGIDaemonProcess swiftmeme user=swiftmeme group=swiftmeme threads=5
+     WSGIScriptAlias / /var/www/swiftmeme/api/swiftmeme.wsgi
+    </VirtualHost>
+
+If your application is installed in a different directory than `/var/www/swiftmeme`, please modify the path accordingly.
+
 ## Licenses
 
 * [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html)
