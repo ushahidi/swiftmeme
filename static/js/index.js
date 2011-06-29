@@ -18,6 +18,19 @@
  * along with SwiftMeme.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Login Box Display Handler
+$("#loginActivator").live("click", function() {
+ $("#signupDIV:visible").slideUp("slow");
+ $("#loginDIV").slideToggle("slow");
+});
+
+// Signup Box Display Handler
+$(".signupButtons").live("click", function() {
+ $("#loginDIV:visible").slideUp("slow");
+ $("#signupDIV").slideToggle("slow");
+});
+
+// Login Box Submit Handler
 $("#loginBox").live("submit", function() {
  $("#loginbutton").text("Logging in...").attr("disabled", true);
  $.getJSON("/api/authenticate", {riverid: $("#loginid").val(), password: $("#loginpw").val()}, function(data) {
@@ -35,6 +48,7 @@ $("#loginBox").live("submit", function() {
  return false;
 });
 
+// Signup Box Submit Handler
 $("#signupBox").live("submit", function() {
  $("#signupbutton").text("Processing...").attr("disabled", true);
  $.getJSON("/api/register", {riverid: $("#signupid").val(), password: $("#signuppw").val(), emailaddress: $("#signupmail").val()}, function(data) {
@@ -49,14 +63,4 @@ $("#signupBox").live("submit", function() {
   }
  });
  return false;
-});
-
-$("#loginActivator").live("click", function() {
- $("#signupDIV:visible").slideUp("slow");
- $("#loginDIV").slideToggle("slow");
-});
-
-$(".signupButtons").live("click", function() {
- $("#loginDIV:visible").slideUp("slow");
- $("#signupDIV").slideToggle("slow");
 });
