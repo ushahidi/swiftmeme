@@ -1,24 +1,22 @@
 $("#loginBox").live("submit", function() {
- var params = {"riverid": $("#loginriverid").val(), "password": $("#loginpassword").val()};
- $.getJSON("/api/authenticate", params, function(data) {
+ $.getJSON("/api/authenticate", {riverid: $("#loginid").val(), password: $("#loginpw").val()}, function(data) {
   if (data.status == "success") {
    localStorage.setItem("memes", JSON.stringify(data.response.memes));
    location = "/dashboard";
   } else {
-   $("#loginerror").text(data.response.errors.pop());
-   $("#loginpassword").val("").focus();
+   $("#loginerror").slideUp().text(data.response.errors.pop()).slideDown();
+   $("#loginpw").val("").focus();
   }
  });
  return false;
 });
 $("#signupBox").live("submit", function() {
- var params = {"riverid": $("#registerriverid").val(), "password": $("#registerpassword").val(), "emailaddress": $("#registeremailaddress").val()};
- $.getJSON("/api/register", params, function(data) {
+ $.getJSON("/api/register", {riverid: $("#signupid").val(), password: $("#signuppw").val(), emailaddress: $("#signupmail").val()}, function(data) {
   if (data.status == "success") {
    localStorage.setItem("memes", JSON.stringify(data.response.memes));
    location = "/dashboard";
   } else {
-   $("#signuperror").text(data.response.errors.pop());
+   $("#signuperror").slideUp().text(data.response.errors.pop()).slideDown();
   }
  });
  return false;
