@@ -27,15 +27,15 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 ## Ubuntu Installation Instructions
 
 1. Install the necessary Ubuntu packages.  
-    aptitude install -y apache2 libapache2-mod-wsgi memcached python-pip git-core
+`aptitude install -y apache2 libapache2-mod-wsgi memcached python-pip git-core`
 
-2. Install the necessary Python packages.
-    pip install Flask oauth2 python-memcached
+2. Install the necessary Python packages.  
+`pip install Flask oauth2 python-memcached`
 
-3. Create a user for SwiftMeme processes to run as.
-    adduser --disabled-password --gecos "" swiftmeme
+3. Create a user for SwiftMeme processes to run as.  
+`adduser --disabled-password --gecos "" swiftmeme`
 
-4. Create a local clone of the application.
+4. Create a local clone of the application.  
     cd /var/www
     git clone https://github.com/ushahidi/SwiftMeme.git swiftmeme
 
