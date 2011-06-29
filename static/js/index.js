@@ -16,7 +16,9 @@ $("#signupBox").live("submit", function() {
    localStorage.setItem("memes", JSON.stringify(data.response.memes));
    location = "/dashboard";
   } else {
-   $("#signuperror").slideUp().text(data.response.errors.pop()).slideDown();
+   $("#signuperror").slideUp("slow", function() {
+    $(this).text(data.response.errors.pop()).slideDown();
+   });
   }
  });
  return false;
