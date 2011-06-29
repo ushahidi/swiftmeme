@@ -48,6 +48,13 @@ If your application is installed in a different directory than `/var/www/swiftme
 * All bundled source code is released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html).
 * All bundled documentation is released under the [GNU Free Documentation License](http://www.gnu.org/licenses/fdl.html).
 
+## Credits
+
+* Charl van Niekerk (Front End and Back End Development)
+* Joe Zhou (Design and Front End Development)
+* Jon Gosier (Creative Input and Inspiration)
+* Matthew Griffiths (Architecture and Inspiration)
+
 ## See Also
 
 * [SwiftRiver](http://swiftly.org)
