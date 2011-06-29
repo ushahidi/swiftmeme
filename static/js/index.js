@@ -1,16 +1,21 @@
 $("#loginBox").live("submit", function() {
+ $("#loginbutton").text("Logging in...").attr("disabled", true);
  $.getJSON("/api/authenticate", {riverid: $("#loginid").val(), password: $("#loginpw").val()}, function(data) {
   if (data.status == "success") {
    localStorage.setItem("memes", JSON.stringify(data.response.memes));
    location = "/dashboard";
   } else {
-   $("#loginerror").slideUp().text(data.response.errors.pop()).slideDown();
-   $("#loginpw").val("").focus();
+   $("#loginerror").slideUp("slow", function() {
+    $(this).text(data.response.errors.pop()).slideDown("slow");
+    $("#loginpw").val("").focus();
+    $("#loginbutton").text("Login").attr("disabled", false);
+   });
   }
  });
  return false;
 });
 $("#signupBox").live("submit", function() {
+ $("#signupbutton").text("Processing...").attr("disabled", true);
  $.getJSON("/api/register", {riverid: $("#signupid").val(), password: $("#signuppw").val(), emailaddress: $("#signupmail").val()}, function(data) {
   if (data.status == "success") {
    localStorage.setItem("memes", JSON.stringify(data.response.memes));
@@ -18,6 +23,7 @@ $("#signupBox").live("submit", function() {
   } else {
    $("#signuperror").slideUp("slow", function() {
     $(this).text(data.response.errors.pop()).slideDown("slow");
+    $("#signupbutton").text("Sign Up!").attr("disabled", false);
    });
   }
  });
