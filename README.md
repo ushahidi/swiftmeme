@@ -31,9 +31,10 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 3. Execute: `curl https://raw.github.com/ushahidi/SwiftMeme/master/deploy/ubuntu/install.sh | bash`
 4. The configuration file will open in `vim`; focus on the gateway, the rest should be fine as-is.
 
-## License
+## Licenses
 
-* [GNU General Public License](http://www.gnu.org/licenses/gpl.html)
+* [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html)
+* [GNU Free Documentation License](http://www.gnu.org/licenses/fdl.html)
 
 ## See Also
 
