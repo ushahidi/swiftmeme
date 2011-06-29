@@ -49,7 +49,7 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 `cp swiftmeme/api/config.example.py swiftmeme/api/config.py`
 
 8. Open the configuration file in vim.  
-`vim /var/www/swiftmeme/api/config.py`
+`vim swiftmeme/api/config.py`
 
 ## Rackspace Deployment
 
