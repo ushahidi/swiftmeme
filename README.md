@@ -24,7 +24,7 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 * [SwiftRiver Core](https://github.com/ushahidi/Swiftriver) (Indirectly)
 * [RiverID](https://github.com/ushahidi/RiverID) (Indirectly)
 
-## Ubuntu Manual Installation Instructions
+## Ubuntu Installation Instructions
 
 1. Install the necessary Ubuntu packages.  
 `apt-get install apache2 libapache2-mod-wsgi memcached python-pip git-core`
@@ -50,7 +50,7 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 8. Open the configuration file in vim.  
 `vim /var/www/swiftmeme/api/config.py`
 
-## Rackspace Automated Deployment Instructions
+## Rackspace Deployment Instructions
 
 1. Create a server of type: Ubuntu 10.10 (Maverick Meerkat)
 2. SSH into the new server as root.
