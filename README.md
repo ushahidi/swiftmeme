@@ -45,8 +45,8 @@ If your application is installed in a different directory than `/var/www/swiftme
 
 ## Licenses
 
-* [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html)
-* [GNU Free Documentation License](http://www.gnu.org/licenses/fdl.html)
+* All bundled code is released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl.html).
+* All bundled documentation is released under the [GNU Free Documentation License](http://www.gnu.org/licenses/fdl.html).
 
 ## See Also
 
