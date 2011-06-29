@@ -26,7 +26,7 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 
 ## Ubuntu Installation Instructions
 
-1. Install the necessary Ubuntu packages.
+1. Install the necessary Ubuntu packages.  
     aptitude install -y apache2 libapache2-mod-wsgi memcached python-pip git-core
 
 2. Install the necessary Python packages.
