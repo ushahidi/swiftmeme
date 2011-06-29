@@ -32,17 +32,16 @@ pip install Flask oauth2 python-memcached
 adduser --disabled-password --gecos "" swiftmeme
 
 # Create a local clone of the application.
-cd /var/www
-git clone https://github.com/ushahidi/SwiftMeme.git swiftmeme
+git clone https://github.com/ushahidi/SwiftMeme.git /var/www/swiftmeme
 
 # Replace the default Apache configuration with the bundled one.
-cp swiftmeme/deploy/ubuntu/000-default /etc/apache2/sites-enabled/
+cp /var/www/swiftmeme/deploy/ubuntu/000-default /etc/apache2/sites-enabled/
 
 # Tell Apache to reload its configuration.
 /etc/init.d/apache2 reload
 
 # Copy the example SwiftMeme configuration file for customisation.
-cp swiftmeme/api/config.example.py swiftmeme/api/config.py
+cp /var/www/swiftmeme/api/config.example.py /var/www/swiftmeme/api/config.py
 
 # Open the configuration file in vim.
 vim /var/www/swiftmeme/api/config.py
