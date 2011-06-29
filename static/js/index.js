@@ -17,7 +17,7 @@ $("#signupBox").live("submit", function() {
    location = "/dashboard";
   } else {
    $("#signuperror").slideUp("slow", function() {
-    $(this).text(data.response.errors.pop()).slideDown();
+    $(this).text(data.response.errors.pop()).slideDown("slow");
    });
   }
  });
