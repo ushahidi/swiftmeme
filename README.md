@@ -41,7 +41,8 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
      WSGIScriptAlias / /var/www/swiftmeme/api/swiftmeme.wsgi
     </VirtualHost>
 
-If your application is installed in a different directory than `/var/www/swiftmeme`, please modify the path accordingly.
+* If your application is installed in a different directory than `/var/www/swiftmeme`, please modify the path accordingly, both in the Apache configuration and in the WSGI handler (`swiftmeme.wsgi`).
+* You need a user set up for the SwiftMeme process to run as. In the above, we assume both the user and group will be `swiftmeme`.
 
 ## Licenses
 
