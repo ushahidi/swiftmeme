@@ -42,6 +42,3 @@ cp /var/www/swiftmeme/deploy/ubuntu/000-default /etc/apache2/sites-enabled/
 
 # Copy the example SwiftMeme configuration file for customisation.
 cp /var/www/swiftmeme/api/config.example.py /var/www/swiftmeme/api/config.py
-
-# Open the configuration file in vim.
-vim /var/www/swiftmeme/api/config.py
