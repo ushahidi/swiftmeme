@@ -1,7 +1,7 @@
 (function() {
- var memes = JSON.parse(localStorage.getItem("memes"));
+ var memes = jQuery.parseJSON(localStorage.getItem("memes"));
  for (var i = 0; i < memes.length; i++) {
-  $.getJSON("/api/getmemeanalytics", {id: memes[i].id, secret: memes[i].secret}, function(data) {
+  jQuery.getJSON("/api/getmemeanalytics", {id: memes[i].id, secret: memes[i].secret}, function(data) {
    if (data.status == "success") {
     alert(data);
    }
