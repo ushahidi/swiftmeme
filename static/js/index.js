@@ -22,12 +22,14 @@
 $("#loginActivator").live("click", function() {
  $("#signupDIV:visible").slideUp("slow");
  $("#loginDIV").slideToggle("slow");
+ $("#loginid").focus();
 });
 
 // Signup Box Display Handler
 $(".signupButtons").live("click", function() {
  $("#loginDIV:visible").slideUp("slow");
  $("#signupDIV").slideToggle("slow");
+ $("#signupid").focus();
 });
 
 // Login Box Submit Handler
