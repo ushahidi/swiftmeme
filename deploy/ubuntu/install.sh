@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# SwiftRiver Ubuntu Deployment Bash Script
+# SwiftRiver Debian Deployment Bash Script
 # ========================================
 #
 # This file is part of SwiftMeme.
@@ -19,11 +19,11 @@
 # along with SwiftMeme.  If not, see <http://www.gnu.org/licenses/>.
 
 # Apply all system updates.
-aptitude update
-aptitude safe-upgrade -y
+apt-get update
+apt-get upgrade -y
 
-# Install the necessary Ubuntu packages.
-aptitude install -y apache2 libapache2-mod-wsgi memcached python-pip git-core
+# Install the necessary Debian packages.
+apt-get install -y apache2 libapache2-mod-wsgi memcached python-pip git
 
 # Install the necessary Python packages.
 pip install Flask oauth2 python-memcached
