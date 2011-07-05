@@ -30,6 +30,7 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 
 1. `wget https://raw.github.com/ushahidi/SwiftMeme/master/deploy/debian/install.sh`
 2. `bash install.sh`
+3. `rm install.sh`
 
 ### Manual
 
