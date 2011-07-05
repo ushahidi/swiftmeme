@@ -35,7 +35,7 @@ adduser --disabled-password --gecos "" swiftmeme
 git clone https://github.com/ushahidi/SwiftMeme.git /var/www/swiftmeme
 
 # Replace the default Apache configuration with the bundled one.
-cp /var/www/swiftmeme/deploy/ubuntu/000-default /etc/apache2/sites-enabled/
+cp /var/www/swiftmeme/deploy/debian/000-default /etc/apache2/sites-enabled/
 
 # Tell Apache to reload its configuration.
 /etc/init.d/apache2 reload
