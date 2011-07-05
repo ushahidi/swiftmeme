@@ -24,18 +24,18 @@ SwiftMeme is a source discovery and keyword monitoring tool for tracking memes o
 * [SwiftRiver Core](https://github.com/ushahidi/Swiftriver) (Indirectly)
 * [RiverID](https://github.com/ushahidi/RiverID) (Indirectly)
 
-## Ubuntu Installation Instructions
+## Debian 6.0 (Squeeze) Installation Instructions
 
 ### Automatic
 
 Execute the following as `root`:
 
-`curl https://raw.github.com/ushahidi/SwiftMeme/master/deploy/ubuntu/install.sh | bash`
+`curl https://raw.github.com/ushahidi/SwiftMeme/master/deploy/debian/install.sh | bash`
 
 ### Manual
 
-1. Install the necessary Ubuntu packages.  
-`apt-get install apache2 libapache2-mod-wsgi memcached python-pip git-core`
+1. Install the necessary Debian packages.  
+`apt-get install apache2 libapache2-mod-wsgi memcached python-pip git`
 
 2. Install the necessary Python packages.  
 `pip install Flask oauth2 python-memcached`
@@ -47,7 +47,7 @@ Execute the following as `root`:
 `git clone https://github.com/ushahidi/SwiftMeme.git /var/www/swiftmeme`
 
 5. Replace the default Apache configuration with the bundled one.  
-`cp /var/www/swiftmeme/deploy/ubuntu/000-default /etc/apache2/sites-enabled/`
+`cp /var/www/swiftmeme/deploy/debian/000-default /etc/apache2/sites-enabled/`
 
 6. Tell Apache to reload its configuration.  
 `/etc/init.d/apache2 reload`
