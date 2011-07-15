@@ -89,4 +89,4 @@ Run the following at the command line:
 
 ## See Also
 
-* [SwiftRiver](http://swiftly.org)
+* [Swiftly.org](http://swiftly.org)
