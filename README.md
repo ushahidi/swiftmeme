@@ -83,6 +83,10 @@ Run the following at the command line:
 * Jon Gosier (Creative Input and Inspiration)
 * Matthew Griffiths (Architecture and Inspiration)
 
+## Support
+
+* [SwiftRiver Mailing List](http://groups.google.com/group/swiftriver)
+
 ## See Also
 
 * [SwiftRiver](http://swiftly.org)
