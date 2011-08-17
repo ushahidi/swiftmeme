@@ -86,7 +86,8 @@ Run the following at the command line:
 ## Support
 
 * [SwiftRiver Mailing List](http://groups.google.com/group/swiftriver)
+* [#ushahidi on Freenode](http://irc.lc/freenode/ushahidi)
 
 ## See Also
 
-* [Swiftly.org](http://swiftly.org)
+* [Ushahidi](http://ushahidi.com/)
